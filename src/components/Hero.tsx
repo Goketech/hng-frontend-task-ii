@@ -12,7 +12,7 @@ const Hero = () => {
                     <Image src="/hero-img.png" alt="hero" width={800} height={400} />
                 </div>
             </div>
-            <div className="flex gap-6 pl-10 mt-20">
+            <div className="flex gap-6 pl-10 mt-20 mb-20">
                 <div className="bg-[#FF8933] rounded w-8 h-[100px]"></div>
                 <div>
                     <h2 className="text-4xl font-bold mb-2">Flash Sales</h2>
