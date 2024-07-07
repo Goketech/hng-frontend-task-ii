@@ -47,7 +47,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
                 <span className='text-[#DB4444] font-medium mr-2'>${newPrice}</span>
                 <span className='text-[#808080] font-medium line-through'> ${oldPrice}</span>
             </div>
-            <div className='flex gap-2 px-4'>
+            <div className='flex gap-2 px-4 pb-4'>
                 <div className='flex gap-1'>
                     <Image
                         src="/full-star.svg"
