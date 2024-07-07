@@ -19,21 +19,23 @@ const Card: React.FC<ProductCardProps> = ({ discountPercentage,
         <div className='p-2 border rounded-lg'>
             <div className='flex justify-between items-center h-auto mb-4'>
                 <span className='bg-[#DB4444] px-3 py-1 rounded-lg text-white'>{discountPercentage}</span>
-                <Image
+                {/* <Image
                     className=""
                     src="/Wishlist.svg"
                     alt="wishlist"
                     width={32}
                     height={32}
                     priority
+                /> */}
+            </div>
+            <div className='flex justify-center items-center h-72'>
+                <Image
+                    src={productImage}
+                    alt="product"
+                    width={300}
+                    height={300}
                 />
             </div>
-            <Image
-                src={productImage}
-                alt="product"
-                width={300}
-                height={300}
-            />
             <div className='flex justify-between mt-8 mb-2'>
                 <p className='font-bold'>{title}</p>
                 <Image

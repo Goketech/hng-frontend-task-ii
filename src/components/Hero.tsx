@@ -5,7 +5,7 @@ const Hero = () => {
         <>
             <div className="flex justify-between">
                 <div className="flex flex-col items-center justify-center pl-10">
-                    <h2 className="font-bold text-4xl max-w-80">Transform Your Space Today</h2>
+                    <h2 className="font-bold text-4xl  text-center">Elevate Your Space Today</h2>
                     <Image src="/oval-top.svg" alt="icon" width={300} height={28} />
                 </div>
                 <div>
