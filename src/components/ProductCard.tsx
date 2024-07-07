@@ -11,14 +11,13 @@ interface ProductCardProps {
     newPrice: number;
 }
 
-const Card: React.FC<ProductCardProps> = ({ discountPercentage,
+const ProductCard: React.FC<ProductCardProps> = ({
     title,
     productImage,
     numberOfRatings, oldPrice, newPrice }) => {
     return (
-        <div className='p-2 border rounded-lg'>
-            <div className='flex justify-between items-center h-auto mb-4'>
-                <span className='bg-[#DB4444] px-3 py-1 rounded-lg text-white'>{discountPercentage}</span>
+        <div className='border relative rounded-lg'>
+            <div className='p-4 mb-4 absolute right-4'>
                 <Image
                     className=""
                     src="/Wishlist.svg"
@@ -34,7 +33,8 @@ const Card: React.FC<ProductCardProps> = ({ discountPercentage,
                 width={300}
                 height={300}
             />
-            <div className='flex justify-between mt-8 mb-2'>
+            <div className='bg-[#F5F5F5] pt-px'>
+            <div className='flex justify-between mt-8 mb-2 px-4'>
                 <p className='font-bold'>{title}</p>
                 <Image
                     src="/shop.svg"
@@ -43,11 +43,11 @@ const Card: React.FC<ProductCardProps> = ({ discountPercentage,
                     height={32}
                 />
             </div>
-            <div className='mb-2'>
+            <div className='mb-2 px-4'>
                 <span className='text-[#DB4444] font-medium mr-2'>${newPrice}</span>
                 <span className='text-[#808080] font-medium line-through'> ${oldPrice}</span>
             </div>
-            <div className='flex gap-2'>
+            <div className='flex gap-2 px-4'>
                 <div className='flex gap-1'>
                     <Image
                         src="/full-star.svg"
@@ -74,7 +74,7 @@ const Card: React.FC<ProductCardProps> = ({ discountPercentage,
                         height={20}
                     />
                     <Image
-                        src="/full-star.svg"
+                        src="/half-star.svg"
                         alt="star"
                         width={20}
                         height={20}
@@ -82,8 +82,9 @@ const Card: React.FC<ProductCardProps> = ({ discountPercentage,
                 </div>
                 <p className='text-[#808080] font-medium'>({numberOfRatings})</p>
             </div>
+            </div>
         </div>
     )
 }
 
-export default Card
+export default ProductCard
