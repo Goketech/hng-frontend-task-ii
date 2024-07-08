@@ -17,7 +17,7 @@ const ProductCard: React.FC<CardProps> = ({
     numberOfRatings, oldPrice, newPrice }) => {
     return (
         <motion.div whileHover={{ scale: 1.05 }}
-        transition={{ type: 'spring', stiffness: 300, damping: 20 }} className='border relative rounded-lg md:mr-6 cursor-pointer'>
+            transition={{ type: 'spring', stiffness: 300, damping: 20 }} className='border relative rounded-lg md:mr-6 cursor-pointer'>
             {/* <div className='p-4 mb-4 absolute right-4'>
                 <Image
                     className=""
@@ -39,12 +39,14 @@ const ProductCard: React.FC<CardProps> = ({
             <div className='bg-[#F5F5F5] pt-px'>
                 <div className='flex justify-between mt-8 mb-2 px-4'>
                     <p className='font-bold'>{title}</p>
-                    <Image
-                        src="/shop.svg"
-                        alt="shop"
-                        width={32}
-                        height={32}
-                    />
+                    <div className='rounded-full bg-[#FF8933]'>
+                        <Image
+                            src="/whiteshop.svg"
+                            alt="shop"
+                            width={32}
+                            height={32}
+                        />
+                    </div>
                 </div>
                 <div className='mb-2 px-4'>
                     <span className='text-[#DB4444] font-medium mr-2'>${newPrice}</span>
