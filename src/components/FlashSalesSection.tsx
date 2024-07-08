@@ -30,7 +30,7 @@ const FlashSalesSection = () => {
     };
 
     return (
-        <>
+        <div className="max-w-screen-2xl 2xl:mx-auto">
             <div className="relative pl-2.5 md:pl-10">
                 <div className="hidden absolute top-[-50px] right-40 md:flex gap-2">
                     <Image id="prev" onClick={handleSliderPrev} className="cursor-pointer bg-[#f5f5f5] rounded-full p-2" src="/icons_arrow-left.svg" alt="arrow" width={32} height={32} />
@@ -66,7 +66,7 @@ const FlashSalesSection = () => {
             <div className="ml-2.5 md:ml-10 m-10 pb-10 w-[85%] border-b mb-10">
                 <button className="bg-[#FF8933] text-white text-lg font-semibold rounded py-4 px-6 md:px-12">View All Products</button>
             </div>
-        </>
+        </div>
     )
 }
 

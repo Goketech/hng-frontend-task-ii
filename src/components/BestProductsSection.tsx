@@ -30,7 +30,7 @@ const BestProductsSection = () => {
     };
 
     return (
-        <>
+        <div className="max-w-screen-2xl 2xl:mx-auto">
             <div className='relative pl-2.5 md:pl-10'>
                 <div className="flex gap-6">
                     <div className="bg-[#FF8933] rounded w-4 md:w-8 h-[85px] md:h-[100px]"></div>
@@ -68,7 +68,7 @@ const BestProductsSection = () => {
             <div className="ml-2.5 md:ml-10 m-10 pb-10 w-[85%] border-b mb-10">
                 <button className="bg-[#FF8933] text-white text-lg font-semibold rounded py-4 px-12">View All Products</button>
             </div>
-        </>
+        </div>
     )
 }
 

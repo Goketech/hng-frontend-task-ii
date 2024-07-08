@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Hero = () => {
     return (
-        <>
+        <div className="max-w-screen-2xl 2xl:mx-auto">
             <div className="flex flex-col md:flex-row mt-20 md:mt-0 justify-between">
                 <div className="flex flex-col items-center justify-center pl-0 md:pl-10">
                     <h2 className="font-bold text-4xl  text-center">Elevate Your Space Today</h2>
@@ -39,7 +39,7 @@ const Hero = () => {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 
