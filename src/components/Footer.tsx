@@ -7,8 +7,8 @@ const Footer = () => {
     const currentYear = new Date().getFullYear();
 
     return (
-        <div className="bg-[#5B3702] py-14 px-36 text-white">
-            <div className="flex justify-between border-b  pb-16 mb-2 border-[#FF9C0A]">
+        <div className="bg-[#5B3702] py-14 px-5 md:px-36 text-white">
+            <div className="grid md:flex grid-cols-1 md:grid-cols-3 justify-between border-b pb-24 md:pb-16 mb-2 border-[#FF9C0A]">
                 <div>
                     <h2 className="text-2xl font-bold mb-6">Duexe</h2>
                     <p className="mb-4">Be the first to know about our app</p>
@@ -19,10 +19,17 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
-                <div>
-                    <h2 className="text-2xl font-bold mb-6">Support</h2>
-                    <p className="mb-4">hello@duexe.com</p>
-                    <p>+234-708-000-3444</p>
+                <div className="grid mt-[100px] md:mt-0 grid-cols-2 justify-between md:col-span-1">
+                    <div>
+                        <h2 className="text-2xl font-bold mb-6">Support</h2>
+                        <p className="mb-4">hello@duexe.com</p>
+                        <p>+234-708-000-3444</p>
+                    </div>
+                    <div className="md:hidden">
+                        <h2 className="text-2xl font-bold mb-6">Account</h2>
+                        <p className="mb-4"><Link href="/cart">Cart</Link></p>
+                        <Link href="/shop">Shop</Link>
+                    </div>
                 </div>
                 <div>
                     <h2 className="text-2xl font-bold mb-6">Account</h2>

@@ -15,7 +15,7 @@ const Card: React.FC<ProductCardProps> = ({ discountPercentage,
     productImage,
     numberOfRatings, oldPrice, newPrice }) => {
     return (
-        <div className='p-2 border rounded-lg mr-6'>
+        <div className='p-2 border rounded-lg md:mr-6'>
             <div className='flex justify-between items-center h-auto'>
                 <p className='bg-[#DB4444] px-3 py-1 rounded-lg text-white'>{discountPercentage}</p>
                 {/* <Image
@@ -49,7 +49,7 @@ const Card: React.FC<ProductCardProps> = ({ discountPercentage,
                 <span className='text-[#808080] font-medium line-through'> ${oldPrice}</span>
             </div>
             <div className='flex gap-2'>
-                <div className='flex gap-1'>
+                <div className='flex md:gap-1'>
                     <Image
                         src="/full-star.svg"
                         alt="star"

@@ -39,7 +39,7 @@ const CheckoutComponent = () => {
                             <input className='bg-[#F5F5F5] py-3.5'  type="text" name='email' id='email' required />
                         </div>
                         <div className='flex gap-4'>
-                            <input type="checkbox" name="" id="" />
+                            <input className='accent-[#FF8933] color bg-white' type="checkbox" name="" id="" />
                             <p className='text-black'>Save this information for faster check-out next time</p>
                         </div>
                     </div>
@@ -69,7 +69,7 @@ const CheckoutComponent = () => {
                     </div>
                     <div>
                         <div className='flex justify-between py-4 border-b'>
-                            <p>SubTotal:</p>
+                            <p>Total:</p>
                             <p>$3240</p>
                         </div>
                         <div className='flex justify-between py-4 border-b'>
@@ -83,7 +83,7 @@ const CheckoutComponent = () => {
                     </div>
                     <div className='flex justify-between items-center mt-8'>
                         <div className='flex gap-4'>
-                            <input type="radio" name="card" id="card" />
+                            <input className='accent-[#FF8933]' type="radio" name="card" id="card" />
                             <label htmlFor="card">Bank</label>
                         </div>
                         <div className='flex gap-2'>
@@ -92,7 +92,7 @@ const CheckoutComponent = () => {
                         </div>
                     </div>
                     <div className='flex gap-4 mt-8'>
-                        <input type="radio" name="card" id="card" />
+                        <input className='border-white accent-[#FF8933]' type="radio" name="card" id="card" />
                         <label htmlFor="card">Cash on Delivery</label>
                     </div>
                     <div className='flex flex-col mt-8'>

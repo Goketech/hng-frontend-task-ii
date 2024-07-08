@@ -4,10 +4,10 @@ import Link from "next/link";
 const Nav = () => {
     return (
         <>
-            <div className="bg-[#5B3702] flex justify-center items-center text-white text-sm p-4 border border-black">
+            <div className="bg-[#5B3702] flex justify-center items-center text-white text-xs md:text-sm p-4 border border-black">
                 <p className="mr-10">Summer Sale For All Dinning Set.  Free Express Delivery - OFF 50%!</p>
-                <span className="font-bold underline cursor-pointer">ShopNow</span>
-                <div className="absolute right-12 items-center cursor-pointer flex">
+                <span className="font-bold hidden md:block underline cursor-pointer">ShopNow</span>
+                <div className="hidden md:blockabsolute right-12 items-center cursor-pointer flex">
                     <p>English</p>
                     <Image
                         className=""
@@ -19,11 +19,11 @@ const Nav = () => {
                     />
                 </div>
             </div>
-            <div className="flex p-10 justify-between border-b">
+            <div className="flex p-2.5 md:p-10 justify-between border-b">
                 <div>
                     <h1 className="font-bold text-2xl">Duexe</h1>
                 </div>
-                <div className="ml-8 flex gap-12">
+                <div className="hidden md:flex ml-8 flex gap-12">
                     <Link href="/" className="underline decoration-[#FF8933]">Shop</Link>
                     <Link href="/">New In</Link>
                     <Link href="/">Best Sellers</Link>
@@ -31,14 +31,14 @@ const Nav = () => {
                     <Link href="/">Sales</Link>
                 </div>
                 <div className="flex gap-4 mr-6">
-                    <Image
+                    {/* <Image
                         className=""
                         src="/Wishlist.svg"
                         alt="wishlist"
                         width={32}
                         height={32}
                         priority
-                    />
+                    /> */}
                     <Image
                         className=""
                         src="/cart-icon.svg"

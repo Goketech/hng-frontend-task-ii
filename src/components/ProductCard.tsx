@@ -14,7 +14,7 @@ const ProductCard: React.FC<CardProps> = ({
     productImage,
     numberOfRatings, oldPrice, newPrice }) => {
     return (
-        <div className='border relative rounded-lg mr-6'>
+        <div className='border relative rounded-lg md:mr-6'>
             {/* <div className='p-4 mb-4 absolute right-4'>
                 <Image
                     className=""
@@ -25,7 +25,7 @@ const ProductCard: React.FC<CardProps> = ({
                     priority
                 />
             </div> */}
-            <div className='flex justify-center items-center h-72 mt-14 mb-10'>
+            <div className='flex justify-center items-center h-72 md:mt-14 md:mb-10'>
                 <Image
                     src={productImage}
                     alt="product"
@@ -48,7 +48,7 @@ const ProductCard: React.FC<CardProps> = ({
                     <span className='text-[#808080] font-medium line-through'> ${oldPrice}</span>
                 </div>
                 <div className='flex gap-2 px-4 pb-4'>
-                    <div className='flex gap-1'>
+                    <div className='flex md:gap-1'>
                         <Image
                             src="/full-star.svg"
                             alt="star"

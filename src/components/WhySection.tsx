@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const WhySection = () => {
     return (
-        <div className="mt-[233px] flex px-20 pb-10 border-b mb-10 justify-between ">
+        <div className="mt-20 gap-10 md:gap-0 md:mt-[233px] flex flex-col md:flex-row px-2.5 md:px-20 pb-10 border-b mb-10 justify-between ">
             <div className="flex flex-col items-center text-left">
                 <div className="icon-container bg-[#5B3702] rounded-full flex items-center justify-center p-2"><Image src="/icon-delivery.svg" alt="delivery-icon" width={40} height={40} /></div>
                 <h5 className="font-semibold text-2xl mt-6 mb-2">FREE AND FAST DELIVERY</h5>
