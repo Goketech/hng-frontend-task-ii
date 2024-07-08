@@ -28,7 +28,7 @@ const Nav = () => {
             </div>
             <div className="flex p-2.5 md:p-10 justify-between border-b">
                 <div>
-                    <h1 className="font-bold text-2xl">Duexe</h1>
+                    <h1 className="font-bold text-2xl"><Link href="/">Duexe</Link></h1>
                 </div>
                 <div className="hidden md:flex ml-8 flex gap-12">
                     <motion.a variants={textVariants} whileHover="hover" href="/" className="underline decoration-[#FF8933]">Shop</motion.a>

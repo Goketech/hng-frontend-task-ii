@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="bg-[#5B3702] py-14 px-5 md:px-36 text-white relative bottom-0">
             <div className="grid md:flex grid-cols-1 md:grid-cols-3 justify-between border-b pb-24 md:pb-16 mb-2 border-[#FF9C0A]">
                 <div>
-                    <h2 className="text-2xl font-bold mb-6">Duexe</h2>
+                    <h2 className="text-2xl font-bold mb-6"><Link href="/">Duexe</Link></h2>
                     <p className="mb-4">Be the first to know about our app</p>
                     <div className="relative">
                         <input className="rounded-md py-4 pl-6 pr-10 bg-transparent border-2 border-white w-full" type="text" placeholder="Enter your Email" />
