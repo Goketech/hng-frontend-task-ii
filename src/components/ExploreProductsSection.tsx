@@ -1,8 +1,14 @@
-import React from 'react'
+"use client"
+
+import { motion } from 'framer-motion';
 import Image from "next/image";
 import ProductCard from './ProductCard';
 
 const ExploreProductsSection = () => {
+    const buttonVariants = {
+        hover: { scale: 1.05 },
+    };
+
     return (
         <div className="max-w-screen-2xl 2xl:mx-auto">
             <div className='px-2.5 md:px-10'>
@@ -42,7 +48,7 @@ const ExploreProductsSection = () => {
                 </div>
             </div>
             <div className="ml-2.5 md:ml-10 m-10 pb-10 w-[85%] border-b mb-10">
-                <button className="bg-[#FF8933] text-white text-lg font-semibold rounded py-4 px-12">Load More</button>
+                <motion.button variants={buttonVariants} whileHover="hover" className="bg-[#FF8933] text-white text-lg font-semibold rounded py-4 px-12">Load More</motion.button>
             </div>
         </div>
     )

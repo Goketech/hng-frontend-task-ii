@@ -1,5 +1,6 @@
 "use client"
 
+import { motion } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 import Image from "next/image";
 import ProductCard from './ProductCard';
@@ -9,6 +10,10 @@ import { register } from "swiper/element/bundle";
 
 const BestProductsSection = () => {
     const swiperElRef2 = useRef<HTMLLinkElement | any>(null);
+
+    const buttonVariants = {
+        hover: { scale: 1.05 },
+    };
 
     useEffect(() => {
         register();
@@ -66,7 +71,7 @@ const BestProductsSection = () => {
                 </div>
             </div>
             <div className="ml-2.5 md:ml-10 m-10 pb-10 w-[85%] border-b mb-10">
-                <button className="bg-[#FF8933] text-white text-lg font-semibold rounded py-4 px-12">View All Products</button>
+                <motion.button variants={buttonVariants} whileHover="hover" className="bg-[#FF8933] text-white text-lg font-semibold rounded py-4 px-12">View All Products</motion.button>
             </div>
         </div>
     )

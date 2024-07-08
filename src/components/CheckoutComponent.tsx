@@ -1,6 +1,13 @@
+"use client"
+
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 const CheckoutComponent = () => {
+    const buttonVariants = {
+        hover: { scale: 1.05 },
+    };
+
     return (
         <div>
             <div className='pl-2.5 md:pl-10 mt-20'>
@@ -98,11 +105,11 @@ const CheckoutComponent = () => {
                     <div className='flex flex-col mt-8'>
                         <div className='flex flex-col md:flex-row items-start gap-4 md:gap-0'>
                             <input type="text" className='border py-[12px] px-12 rounded w-full text-center' placeholder='Coupon Code' />
-                            <button className='md:ml-2 bg-[#FF8933] text-white py-[12px] px-12 rounded w-full'>Apply Coupon</button>
+                            <motion.button variants={buttonVariants} whileHover="hover" className='md:ml-2 bg-[#FF8933] text-white py-[12px] px-12 rounded w-full'>Apply Coupon</motion.button>
                         </div>
                     </div>
                     <div className='mt-8'>
-                        <button className='w-full md:ml-2 bg-[#FF8933] text-white py-[12px] px-6 rounded'>Place Order</button>
+                        <motion.button variants={buttonVariants} whileHover="hover" className='w-full md:ml-2 bg-[#FF8933] text-white py-[12px] px-6 rounded'>Place Order</motion.button>
                     </div>
                 </div>
             </div>

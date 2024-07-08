@@ -1,6 +1,14 @@
+"use client"
+
+import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const CartComponent = () => {
+    const buttonVariants = {
+        hover: { scale: 1.05 },
+    };
+
     return (
         <div>
             <div className='pl-2.5 md:pl-10 mt-20'>
@@ -51,14 +59,14 @@ const CartComponent = () => {
                     </tbody>
                 </table>
                 <div className='flex justify-between mt-6'>
-                    <button className="bg-[white] text-[#FF8933] border-2 border-[#FF8933] font-medium rounded py-[6px] md:py-[12px] px-6 md:px-12">Return to Shop</button>
-                    <button className="bg-[#FF8933] mr-2 md:mr-0 text-white text-base border-2 border-[#FF8933]  font-bold rounded py-[6px] md:py-[12px] px-6 md:px-12">Update Cart</button>
+                    <Link href="/"><motion.button variants={buttonVariants} whileHover="hover" className="bg-[white] text-[#FF8933] border-2 border-[#FF8933] font-medium rounded py-[6px] md:py-[12px] px-6 md:px-12">Return to Shop</motion.button></Link>
+                    <motion.button variants={buttonVariants} whileHover="hover" className="bg-[#FF8933] mr-2 md:mr-0 text-white text-base border-2 border-[#FF8933]  font-bold rounded py-[6px] md:py-[12px] px-6 md:px-12">Update Cart</motion.button>
                 </div>
                 <div className='mt-20 flex flex-col md:flex-row justify-between'>
                     <div className='flex flex-col'>
                         <div className='flex flex-col mr-2 md:mr-0 md:flex-row items-start gap-4 md:gap-0'>
                             <input type="text" className='border py-[12px] px-12 rounded w-full text-center' placeholder='Coupon Code' />
-                            <button className='md:ml-2 bg-[#FF8933] text-white py-[12px] px-12 rounded w-full'>Apply Coupon</button>
+                            <motion.button variants={buttonVariants} whileHover="hover" className='md:ml-2 bg-[#FF8933] text-white py-[12px] px-12 rounded w-full'>Apply Coupon</motion.button>
                         </div>
                     </div>
                     <div className='border-2 px-6 py-8 mt-10 md:mt-0  mb-36'>
@@ -76,7 +84,7 @@ const CartComponent = () => {
                             <p>$3240</p>
                         </div>
                         <div className='flex justify-center mt-4'>
-                            <button className="bg-[#FF8933] text-white text-base font-bold rounded py-[12px] px-10">Proceed to Checkout</button>
+                            <Link href="/checkout"><motion.button variants={buttonVariants} whileHover="hover" className="bg-[#FF8933] text-white text-base font-bold rounded py-[12px] px-10">Proceed to Checkout</motion.button></Link>
                         </div>
                     </div>
                 </div>

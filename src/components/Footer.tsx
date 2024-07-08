@@ -14,7 +14,7 @@ const Footer = () => {
                     <p className="mb-4">Be the first to know about our app</p>
                     <div className="relative">
                         <input className="rounded-md py-4 pl-6 pr-10 bg-transparent border-2 border-white w-full" type="text" placeholder="Enter your Email" />
-                        <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                        <div className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer">
                             <Image src="/icon-send.svg" alt="arrow" width={24} height={24} />
                         </div>
                     </div>
@@ -22,19 +22,19 @@ const Footer = () => {
                 <div className="grid mt-[100px] md:mt-0 grid-cols-2 justify-between md:col-span-1">
                     <div>
                         <h2 className="text-2xl font-bold mb-6">Support</h2>
-                        <p className="mb-4">hello@duexe.com</p>
-                        <p>+234-708-000-3444</p>
+                        <p className="mb-4 hover:scale-110 cursor-pointer">hello@duexe.com</p>
+                        <p className="hover:scale-110 cursor-pointer">+234-708-000-3444</p>
                     </div>
                     <div className="md:hidden">
                         <h2 className="text-2xl font-bold mb-6">Account</h2>
-                        <p className="mb-4"><Link href="/cart">Cart</Link></p>
-                        <Link href="/shop">Shop</Link>
+                        <p className="mb-4 hover:scale-110 cursor-pointer"><Link href="/cart">Cart</Link></p>
+                        <Link className="hover:scale-110 cursor-pointer" href="/shop">Shop</Link>
                     </div>
                 </div>
                 <div>
                     <h2 className="text-2xl font-bold mb-6">Account</h2>
-                    <p className="mb-4"><Link href="/cart">Cart</Link></p>
-                    <Link href="/shop">Shop</Link>
+                    <p className="mb-4 hover:scale-110 cursor-pointer"><Link href="/cart">Cart</Link></p>
+                    <p className="hover:scale-110 cursor-pointer"><Link href="/shop">Shop</Link></p>
                 </div>
             </div>
             <p className="text-center text-[#82673f]">&copy; Duexe {currentYear}. All right reserved</p>
