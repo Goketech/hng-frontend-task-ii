@@ -31,7 +31,7 @@ const FlashSalesSection = () => {
 
     return (
         <>
-            <div className="relative">
+            <div className="relative pl-10">
                 <div className="absolute top-[-50px] right-40 flex gap-2">
                     <Image id="prev" onClick={handleSliderPrev} className="cursor-pointer bg-[#f5f5f5] rounded-full p-2" src="/icons_arrow-left.svg" alt="arrow" width={32} height={32} />
                     <Image id="next" onClick={handleSliderChange} className="cursor-pointer bg-[#f5f5f5] rounded-full p-2" src="/icons_arrow-right.svg" alt="arrow" width={32} height={32} />
@@ -41,7 +41,6 @@ const FlashSalesSection = () => {
                     ref={swiperElRef}
                     slides-per-view="4"
                     init="false"
-                    class="pl-10"
                 >
                     <swiper-slide><Card discountPercentage="-35%" title="Kabir Chair" numberOfRatings={88} oldPrice={160} newPrice={120} productImage="/kabir-chair.png" /></swiper-slide>
                     <swiper-slide><Card discountPercentage="-35%" title="Asara Chair" numberOfRatings={86} oldPrice={160} newPrice={110} productImage="/asara-chair.png" /></swiper-slide>
