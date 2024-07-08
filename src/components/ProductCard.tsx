@@ -1,17 +1,15 @@
 import React from 'react';
 import Image from "next/image";
 
-interface ProductCardProps {
-    discountPercentage: string;
+interface CardProps {
     title: string;
     productImage: string;
-    starIcons: JSX.Element[];
     numberOfRatings: number;
     oldPrice: number;
     newPrice: number;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({
+const ProductCard: React.FC<CardProps> = ({
     title,
     productImage,
     numberOfRatings, oldPrice, newPrice }) => {

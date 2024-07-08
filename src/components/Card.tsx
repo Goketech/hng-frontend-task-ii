@@ -5,7 +5,6 @@ interface ProductCardProps {
     discountPercentage: string;
     title: string;
     productImage: string;
-    starIcons: JSX.Element[];
     numberOfRatings: number;
     oldPrice: number;
     newPrice: number;
