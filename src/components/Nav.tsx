@@ -53,7 +53,6 @@ const Nav = () => {
                             alt="cart"
                             width={32}
                             height={32}
-                            priority
                             whileHover={{ scale: 1.1 }}
                         />
                     </Link>
