@@ -1,4 +1,6 @@
-import React from 'react';
+"use client"
+
+import { motion } from 'framer-motion';
 import Image from "next/image";
 
 interface CardProps {
@@ -14,7 +16,8 @@ const ProductCard: React.FC<CardProps> = ({
     productImage,
     numberOfRatings, oldPrice, newPrice }) => {
     return (
-        <div className='border relative rounded-lg md:mr-6'>
+        <motion.div whileHover={{ scale: 1.05 }}
+        transition={{ type: 'spring', stiffness: 300, damping: 20 }} className='border relative rounded-lg md:mr-6 cursor-pointer'>
             {/* <div className='p-4 mb-4 absolute right-4'>
                 <Image
                     className=""
@@ -83,7 +86,7 @@ const ProductCard: React.FC<CardProps> = ({
                     <p className='text-[#808080] font-medium'>({numberOfRatings})</p>
                 </div>
             </div>
-        </div>
+        </motion.div>
     )
 }
 

@@ -1,3 +1,6 @@
+"use client"
+
+import { motion } from 'framer-motion';
 import React from 'react';
 import Image from "next/image";
 
@@ -15,7 +18,8 @@ const Card: React.FC<ProductCardProps> = ({ discountPercentage,
     productImage,
     numberOfRatings, oldPrice, newPrice }) => {
     return (
-        <div className='p-2 border rounded-lg md:mr-6'>
+        <motion.div whileHover={{ scale: 1.05 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 20 }} className='p-2 border rounded-lg md:mr-6 cursor-pointer'>
             <div className='flex justify-between items-center h-auto'>
                 <p className='bg-[#DB4444] px-3 py-1 rounded-lg text-white'>{discountPercentage}</p>
                 {/* <Image
@@ -83,7 +87,7 @@ const Card: React.FC<ProductCardProps> = ({ discountPercentage,
                 </div>
                 <p className='text-[#808080] font-medium'>({numberOfRatings})</p>
             </div>
-        </div>
+        </motion.div>
     )
 }
 

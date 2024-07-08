@@ -20,12 +20,12 @@ const ExploreProductsSection = () => {
                 </div>
                 <h2 className='mt-2 text-2xl md:text-4xl font-semibold mb-4'>Explore Our Products</h2>
                 <div className='hidden md:flex gap-7 mb-36'>
-                    <button className='text-white rounded-full border px-6 py-2.5 bg-[#FF8933]'>All</button>
-                    <button className='rounded-full border px-6 py-2.5 border-[#FF8933]'>Chairs</button>
-                    <button className='rounded-full border px-6 py-2.5 border-[#FF8933]'>Dining Set</button>
-                    <button className='rounded-full border px-6 py-2.5 border-[#FF8933]'>Sofa Set</button>
-                    <button className='rounded-full border px-6 py-2.5 border-[#FF8933]'>Side Table</button>
-                    <button className='rounded-full border px-6 py-2.5 border-[#FF8933]'>Accessories</button>
+                    <motion.button whileHover={{ scale: 1.05 }} className='text-white rounded-full border px-6 py-2.5 bg-[#FF8933]'>All</motion.button>
+                    <motion.button whileHover={{ scale: 1.05 }} className='rounded-full border px-6 py-2.5 border-[#FF8933]'>Chairs</motion.button>
+                    <motion.button whileHover={{ scale: 1.05 }} className='rounded-full border px-6 py-2.5 border-[#FF8933]'>Dining Set</motion.button>
+                    <motion.button whileHover={{ scale: 1.05 }} className='rounded-full border px-6 py-2.5 border-[#FF8933]'>Sofa Set</motion.button>
+                    <motion.button whileHover={{ scale: 1.05 }} className='rounded-full border px-6 py-2.5 border-[#FF8933]'>Side Table</motion.button>
+                    <motion.button whileHover={{ scale: 1.05 }} className='rounded-full border px-6 py-2.5 border-[#FF8933]'>Accessories</motion.button>
                 </div>
                 <div className='grid grid-cols-2 gap-2 md:hidden'>
                     <ProductCard title="Zaron Side Table" numberOfRatings={65} oldPrice={1160} newPrice={960} productImage="/zaron-side-table.png" />
