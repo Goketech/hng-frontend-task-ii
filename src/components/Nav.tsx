@@ -62,7 +62,6 @@ const Nav = () => {
                         alt="search"
                         width={32}
                         height={32}
-                        priority
                         whileHover={{ scale: 1.1 }}
                     />
                 </div>
