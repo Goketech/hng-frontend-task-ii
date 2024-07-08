@@ -16,7 +16,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
     productImage,
     numberOfRatings, oldPrice, newPrice }) => {
     return (
-        <div className='border relative rounded-lg'>
+        <div className='border relative rounded-lg mr-6'>
             {/* <div className='p-4 mb-4 absolute right-4'>
                 <Image
                     className=""

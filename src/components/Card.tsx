@@ -16,9 +16,9 @@ const Card: React.FC<ProductCardProps> = ({ discountPercentage,
     productImage,
     numberOfRatings, oldPrice, newPrice }) => {
     return (
-        <div className='p-2 border rounded-lg'>
-            <div className='flex justify-between items-center h-auto mb-4'>
-                <span className='bg-[#DB4444] px-3 py-1 rounded-lg text-white'>{discountPercentage}</span>
+        <div className='p-2 border rounded-lg mr-6'>
+            <div className='flex justify-between items-center h-auto'>
+                <p className='bg-[#DB4444] px-3 py-1 rounded-lg text-white'>{discountPercentage}</p>
                 {/* <Image
                     className=""
                     src="/Wishlist.svg"
@@ -28,7 +28,7 @@ const Card: React.FC<ProductCardProps> = ({ discountPercentage,
                     priority
                 /> */}
             </div>
-            <div className='flex justify-center items-center h-72'>
+            <div className='flex justify-center items-center h-72 mt-14'>
                 <Image
                     src={productImage}
                     alt="product"
