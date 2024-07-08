@@ -69,7 +69,7 @@ const ProductDetailComponent = () => {
                 </div>
                 <div className='flex mb-48'>
                     <ProductCard title="Kelly Chair" numberOfRatings={65} oldPrice={1160} newPrice={960} productImage="/kelly-chair.png" />
-                    <ProductCard title="Liam Chair" numberOfRatings={65} oldPrice={1260} newPrice={940} productImage="/liam-chair.png" />
+                    <ProductCard title="Liam Chair" numberOfRatings={65} oldPrice={1260} newPrice={940} productImage="/sansa-chair.png" />
                     <ProductCard title="Sansa Chair" numberOfRatings={65} oldPrice={1060} newPrice={900} productImage="/lianna-sofa.png" />
                     <ProductCard title="JPearl Chair" numberOfRatings={65} oldPrice={1060} newPrice={900} productImage="/pearl-chair.png" />
                 </div>
