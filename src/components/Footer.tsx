@@ -21,7 +21,7 @@ const Footer = () => {
                 </div>
                 <div>
                     <h2 className="text-2xl font-bold mb-6">Support</h2>
-                    <p className="mb-4">hello@deuxe.com</p>
+                    <p className="mb-4">hello@duexe.com</p>
                     <p>+234-708-000-3444</p>
                 </div>
                 <div>
@@ -30,7 +30,7 @@ const Footer = () => {
                     <Link href="/shop">Shop</Link>
                 </div>
             </div>
-            <p className="text-center text-[#82673f]">&copy; {currentYear}. All right reserved</p>
+            <p className="text-center text-[#82673f]">&copy; Duexe {currentYear}. All right reserved</p>
         </div>
     )
 }

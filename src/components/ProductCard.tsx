@@ -25,7 +25,7 @@ const ProductCard: React.FC<CardProps> = ({
                     priority
                 />
             </div> */}
-            <div className='flex justify-center items-center h-72'>
+            <div className='flex justify-center items-center h-72 mt-14 mb-10'>
                 <Image
                     src={productImage}
                     alt="product"
