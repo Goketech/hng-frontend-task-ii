@@ -39,9 +39,9 @@ const ProductCard: React.FC<CardProps> = ({
             <div className='bg-[#F5F5F5] pt-px'>
                 <div className='flex justify-between mt-8 mb-2 px-4'>
                     <p className='font-bold'>{title}</p>
-                    <div className='rounded-full bg-[#FF8933]'>
+                    <div className='rounded-full bg-[#FF8933] p-2'>
                         <Image
-                            src="/whiteshop.svg"
+                            src="/white-shop.svg"
                             alt="shop"
                             width={32}
                             height={32}
