@@ -1,3 +1,6 @@
+"use client"
+
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import ProductCard from './ProductCard';
 
@@ -39,7 +42,7 @@ const ProductDetailComponent = () => {
                             <button className='rounded-r bg-[#FF8933] text-4xl text-white w-12 h-12'>+</button>
                         </div>
                         <div>
-                            <button className="bg-[#FF8933] text-white text-base font-medium rounded py-[12px] px-12">Buy Now</button>
+                            <motion.button whileHover={{ scale: 1.05 }} className="bg-[#FF8933] text-white text-base font-medium rounded py-[12px] px-12">Buy Now</motion.button>
                         </div>
                     </div>
                     <div className='mt-5 border-2'>
