@@ -16,7 +16,7 @@ const WhySection = () => {
             <div className="flex flex-col items-center text-left">
                 <div className="icon-container bg-[#5B3702] rounded-full flex items-center justify-center p-2"><Image src="/shield-tick.svg" alt="shield-icon" width={40} height={40} /></div>
                 <h5 className="font-semibold text-2xl mt-6 mb-2">MONEY BACK GUARANTEE</h5>
-                <p>We'll return money within 30 days</p>
+                <p>We&apos;ll return money within 30 days</p>
             </div>
         </div>
     )
