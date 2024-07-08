@@ -7,7 +7,7 @@ const Footer = () => {
     const currentYear = new Date().getFullYear();
 
     return (
-        <div className="bg-[#5B3702] py-14 px-5 md:px-36 text-white">
+        <div className="bg-[#5B3702] py-14 px-5 md:px-36 text-white relative bottom-0">
             <div className="grid md:flex grid-cols-1 md:grid-cols-3 justify-between border-b pb-24 md:pb-16 mb-2 border-[#FF9C0A]">
                 <div>
                     <h2 className="text-2xl font-bold mb-6">Duexe</h2>
@@ -32,7 +32,7 @@ const Footer = () => {
                     </div>
                 </div>
                 <div>
-                    <h2 className="text-2xl font-bold mb-6">Account</h2>
+                    <h2 className="text-2xl font-bold mb-6 mt-8 md:mt-0">Account</h2>
                     <p className="mb-4 hover:scale-110 cursor-pointer"><Link href="/cart">Cart</Link></p>
                     <p className="hover:scale-110 cursor-pointer"><Link href="/shop">Shop</Link></p>
                 </div>

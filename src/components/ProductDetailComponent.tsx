@@ -3,12 +3,12 @@ import ProductCard from './ProductCard';
 
 const ProductDetailComponent = () => {
     return (
-        <div>
-            <div className='pl-10 mt-20'>
+        <div className='max-w-screen-2xl 2xl:mx-auto'>
+            <div className='pl-2.5 md:pl-10 mt-20'>
                 <p className='text-xl text-[#737373]'>Home / Category / Chair / <span className='text-black'>Sofia Chair</span></p>
             </div>
-            <div className="flex px-28 py-16 justify-between">
-                <div className="h-[655px] w-[645px] relative">
+            <div className="flex flex-col md:flex-row px-2.5 md:px-28 py-16 justify-between">
+                <div className="h-[655px] w-full md:w-[645px] relative">
                     <Image layout="fill" objectFit="contain" className="max-w-full max-h-full" src="/sofia-chair.png" alt="chair" />
                 </div>
                 <div className='flex flex-col w-[373px]'>
@@ -60,14 +60,14 @@ const ProductDetailComponent = () => {
                     </div>
                 </div>
             </div>
-            <div className='pl-10'>
-                <div className="flex gap-6">
-                    <div className="bg-[#FF8933] rounded w-8 h-[100px]"></div>
+            <div className='pl-2.5 md:pl-10'>
+                <div className="flex gap-3 md:gap-6">
+                    <div className="bg-[#FF8933] rounded w-4 md:w-8 h-[85px] md:h-[100px]"></div>
                     <div className='flex items-center'>
                         <p className='text-[#FF8933] font-semibold'>Related Product</p>
                     </div>
                 </div>
-                <div className='flex mb-48'>
+                <div className=' grid gap-2 md:gap-0 grid-cols-2 mt-2 md:mt-0 md:flex mb-48'>
                     <ProductCard title="Kelly Chair" numberOfRatings={65} oldPrice={1160} newPrice={960} productImage="/kelly-chair.png" />
                     <ProductCard title="Liam Chair" numberOfRatings={65} oldPrice={1260} newPrice={940} productImage="/sansa-chair.png" />
                     <ProductCard title="Sansa Chair" numberOfRatings={65} oldPrice={1060} newPrice={900} productImage="/lianna-sofa.png" />

@@ -10,7 +10,7 @@ const CartComponent = () => {
     };
 
     return (
-        <div>
+        <div className="max-w-screen-2xl 2xl:mx-auto">
             <div className='pl-2.5 md:pl-10 mt-20'>
                 <p className='text-xl text-[#737373]'>Home / <span className='text-black'>Cart</span></p>
             </div>

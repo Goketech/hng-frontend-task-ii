@@ -12,7 +12,7 @@ const ExploreProductsSection = () => {
     return (
         <div className="max-w-screen-2xl 2xl:mx-auto">
             <div className='px-2.5 md:px-10'>
-                <div className="flex gap-6">
+                <div className="flex gap-3 md:gap-6">
                     <div className="bg-[#FF8933] rounded w-4 md:w-8 h-[85px] md:h-[100px]"></div>
                     <div className='flex items-center'>
                         <p className='text-[#FF8933] font-semibold'>Our Products</p>
