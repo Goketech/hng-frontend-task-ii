@@ -3,10 +3,10 @@ import Image from 'next/image';
 const CheckoutComponent = () => {
     return (
         <div>
-            <div className='pl-10 mt-20'>
+            <div className='pl-2.5 md:pl-10 mt-20'>
                 <p className='text-xl text-[#737373]'>Home / Category / Product / View Cart / <span className='text-black'>Checkout</span></p>
             </div>
-            <div className='flex p-20 justify-between mb-32'>
+            <div className='flex flex-col md:flex-row p-2.5 md:p-20 justify-between mb-32'>
                 <div>
                     <h2 className='text-4xl font-medium mb-12'>Billing Details</h2>
                     <div className='flex flex-col gap-8 text-[#999999]'>
@@ -96,13 +96,13 @@ const CheckoutComponent = () => {
                         <label htmlFor="card">Cash on Delivery</label>
                     </div>
                     <div className='flex flex-col mt-8'>
-                        <div className='flex items-start'>
-                            <input type="text" className='border py-[12px] px-10 rounded' placeholder='Coupon Code' />
-                            <button className='ml-2 bg-[#FF8933] text-white py-[12px] px-8 rounded'>Apply Coupon</button>
+                        <div className='flex flex-col md:flex-row items-start gap-4 md:gap-0'>
+                            <input type="text" className='border py-[12px] px-12 rounded w-full text-center' placeholder='Coupon Code' />
+                            <button className='md:ml-2 bg-[#FF8933] text-white py-[12px] px-12 rounded w-full'>Apply Coupon</button>
                         </div>
                     </div>
                     <div className='mt-8'>
-                        <button className='ml-2 bg-[#FF8933] text-white py-[12px] px-6 rounded'>Place Order</button>
+                        <button className='w-full md:ml-2 bg-[#FF8933] text-white py-[12px] px-6 rounded'>Place Order</button>
                     </div>
                 </div>
             </div>
