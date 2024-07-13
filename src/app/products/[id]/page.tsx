@@ -12,12 +12,14 @@ export default function ProductDetailsPage({
   params: { id: string }
 }) {
   const [product, setProduct] = useState<any>({});
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const getProducts = async () => {
-
+      setLoading(true);
       const product = await fetchProduct(id)
       setProduct(product)
+      setLoading(false);
     };
     getProducts();
   }, [id]);
@@ -25,7 +27,7 @@ export default function ProductDetailsPage({
   return (
     <div>
       <Nav />
-      <ProductDetailComponent product={product} />
+      {loading ? <div>Loading...</div> : (<ProductDetailComponent product={product} />)}
       <Footer />
     </div>
   )

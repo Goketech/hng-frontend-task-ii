@@ -13,6 +13,7 @@ const FlashSalesSection = () => {
     const swiperElRef = useRef<HTMLLinkElement | any>(null);
     const [flashProducts, setFlashProducts] = useState<any[]>([]);
     const flashSaleId = process.env.NEXT_PUBLIC_FLASH_SALE_ID || 'default_flash_sale_id';
+    const [loading, setLoading] = useState<boolean>(true);
 
     const buttonVariants = {
         hover: { scale: 1.05 },
@@ -39,10 +40,12 @@ const FlashSalesSection = () => {
 
     useEffect(() => {
         const getProducts = async () => {
+            setLoading(true);
             const data = await fetchData(flashSaleId);
             if (data) {
                 setFlashProducts(data.items);
             }
+            setLoading(false);
         };
 
         getProducts();
@@ -55,47 +58,62 @@ const FlashSalesSection = () => {
                     <Image id="prev" onClick={handleSliderPrev} className="cursor-pointer bg-[#f5f5f5] rounded-full p-2" src="/icons_arrow-left.svg" alt="arrow" width={32} height={32} />
                     <Image id="next" onClick={handleSliderChange} className="cursor-pointer bg-[#f5f5f5] rounded-full p-2" src="/icons_arrow-right.svg" alt="arrow" width={32} height={32} />
                 </div>
-                <div className="md:hidden grid gap-2 grid-cols-2">
-                    {flashProducts.map((product) => (
-                        <Card
-                            id={product.id}
-                            key={product.id}
-                            discountPercentage="-35%"
-                            title={product.name}
-                            numberOfRatings={85}
-                            oldPrice={product.current_price[0].USD[0]}
-                            newPrice={product.current_price[0].USD[1]}
-                            productImage={
-                                product.photos.length > 0
-                                    ? `https://api.timbu.cloud/images/${product.photos[0].url}`
-                                    : 'https://api.timbu.cloud/images/default_image.jpg'
-                            }
-                        />
-                    ))}
-                </div>
+                {loading ? (
+                    <div className="md:hidden flex justify-center items-center h-64">
+                        <p className="text-gray-500 text-lg">Loading...</p>
+                    </div>
+                ) : (
+                    <div className="md:hidden grid gap-2 grid-cols-2">
+                        {flashProducts.map((product) => (
+                            <Card
+                                id={product.id}
+                                key={product.id}
+                                discountPercentage="-35%"
+                                title={product.name}
+                                numberOfRatings={85}
+                                oldPrice={product.current_price[0].USD[0]}
+                                newPrice={product.current_price[0].USD[1]}
+                                productImage={
+                                    product.photos.length > 0
+                                        ? `https://api.timbu.cloud/images/${product.photos[0].url}`
+                                        : 'https://api.timbu.cloud/images/default_image.jpg'
+                                }
+                            />
+                        ))}
+                    </div>
+                )}
                 <div className='hidden md:block'>
                     <swiper-container
                         ref={swiperElRef}
                         slides-per-view="4"
                         init="false"
                     >
-                        {flashProducts.map((product) => (
-                            <swiper-slide key={product.id}>
-                                <Card
-                                    id={product.id}
-                                    discountPercentage="-35%"
-                                    title={product.name}
-                                    numberOfRatings={85}
-                                    oldPrice={product.current_price[0].USD[0]}
-                                    newPrice={product.current_price[0].USD[1]}
-                                    productImage={
-                                        product.photos.length > 0
-                                            ? `https://api.timbu.cloud/images/${product.photos[0].url}`
-                                            : 'https://api.timbu.cloud/images/default_image.jpg'
-                                    }
-                                />
-                            </swiper-slide>
-                        ))}
+                        {loading ? (
+                            <div className="flex justify-center items-center h-64">
+                                <p className="text-black-500 text-lg">Loading...</p>
+                            </div>
+                        ) : (
+                            <>
+                                {flashProducts.map((product) => (
+                                    <swiper-slide key={product.id}>
+                                        <Card
+                                            id={product.id}
+                                            discountPercentage="-35%"
+                                            title={product.name}
+                                            numberOfRatings={85}
+                                            oldPrice={product.current_price[0].USD[0]}
+                                            newPrice={product.current_price[0].USD[1]}
+                                            productImage={
+                                                product.photos.length > 0
+                                                    ? `https://api.timbu.cloud/images/${product.photos[0].url}`
+                                                    : 'https://api.timbu.cloud/images/default_image.jpg'
+                                            }
+                                        />
+                                    </swiper-slide>
+                                ))}
+                            </>
+                        )}
+
                     </swiper-container>
                 </div>
             </div>

@@ -14,6 +14,7 @@ const ExploreProductsSection = () => {
     const [sideProducts, setSideProducts] = useState<any[]>([]);
     const [accessoryProducts, setAccessoryProducts] = useState<any[]>([]);
     const [currentSection, setCurrentSection] = useState<string>('explore');
+    const [loadingExplore, setLoadingExplore] = useState<boolean>(true);
     const exploreId =
         process.env.NEXT_PUBLIC_EXPLORE_ID || 'default_best_sale_id';
     const chairId = process.env.NEXT_PUBLIC_CHAIR_ID || 'default_best_sale_id';
@@ -29,10 +30,12 @@ const ExploreProductsSection = () => {
 
     useEffect(() => {
         const getExploreProducts = async () => {
+            setLoadingExplore(true);
             const data = await fetchData(exploreId);
             if (data) {
                 setExploreProducts(data.items);
             }
+            setLoadingExplore(false);
         };
 
         const getChairProducts = async () => {
@@ -147,7 +150,9 @@ const ExploreProductsSection = () => {
                     </motion.button>
                 </div>
                 <div className="grid grid-cols-2 gap-2 md:hidden">
-                    {currentSection === 'explore' &&
+                    {currentSection === 'explore' && (loadingExplore ? (
+                        <p>Loading Explore Products...</p>
+                    ) : (
                         exploreProducts.map((product) => (
                             <ProductCard
                                 id={product.id}
@@ -162,7 +167,7 @@ const ExploreProductsSection = () => {
                                         : 'https://api.timbu.cloud/images/default_image.jpg'
                                 }
                             />
-                        ))}
+                        ))))}
                     {currentSection === 'chair' &&
                         chairProducts.map((product) => (
                             <ProductCard
@@ -262,7 +267,9 @@ const ExploreProductsSection = () => {
                                 }
                             />
                         ))}
-                    {currentSection === 'explore' &&
+                    {currentSection === 'explore' && (loadingExplore ? (
+                        <p>Loading Explore Products...</p>
+                    ) : (
                         exploreProducts.map((product) => (
                             <ProductCard
                                 id={product.id}
@@ -277,7 +284,7 @@ const ExploreProductsSection = () => {
                                         : 'https://api.timbu.cloud/images/default_image.jpg'
                                 }
                             />
-                        ))}
+                        ))))}
                     {currentSection === 'dining' &&
                         diningProducts.map((product) => (
                             <ProductCard
