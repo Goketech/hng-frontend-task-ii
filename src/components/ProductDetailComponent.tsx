@@ -1,6 +1,6 @@
 "use client"
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import ProductCard from './ProductCard';
@@ -10,14 +10,23 @@ interface ProductCardProps {
 }
 
 const ProductDetailComponent: React.FC<ProductCardProps> = ({ product }) => {
+    const [count, setCount] = useState(1);
 
     if (typeof product !== 'object' || product === null) {
         return (
-          <div className="error-container">
-            <h2>Error: Product not found</h2>
-          </div>
+            <div className="error-container">
+                <h2>Error: Product not found</h2>
+            </div>
         );
-      }
+    }
+
+    const handleIncrement = () => {
+        setCount((prevCount) => Math.min(prevCount + 1, 20));
+    };
+
+    const handleDecrement = () => {
+        setCount((prevCount) => Math.max(prevCount - 1, 1));
+    };
 
     return (
         <div className='max-w-screen-2xl 2xl:mx-auto'>
@@ -52,9 +61,9 @@ const ProductDetailComponent: React.FC<ProductCardProps> = ({ product }) => {
                     </p>
                     <div className='flex gap-5'>
                         <div className='border rounded border-r-0'>
-                            <button className='text-4xl w-12 h-12 border-r'>-</button>
-                            <input value={2} className='w-[77px] text-center font-medium text-xl' type="text" name="" id="" />
-                            <button className='rounded-r bg-[#FF8933] text-4xl text-white w-12 h-12'>+</button>
+                            <button onClick={handleDecrement} className='text-4xl w-12 h-12 border-r'>-</button>
+                            <input value={count} readOnly className='w-[77px] text-center font-medium text-xl' type="text" name="" id="" />
+                            <button onClick={handleIncrement} className='rounded-r bg-[#FF8933] text-4xl text-white w-12 h-12'>+</button>
                         </div>
                         <div>
                             <motion.button whileHover={{ scale: 1.05 }} className="bg-[#FF8933] text-white text-base font-medium rounded py-[12px] px-12">Buy Now</motion.button>
