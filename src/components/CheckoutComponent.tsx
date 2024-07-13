@@ -114,9 +114,10 @@ const CheckoutComponent = () => {
                                     </div>
                                     <div>
                                         <p className='font-medium'>{product.name}</p>
+                                        <p className='font-medium'>X{product.quantity}</p>
                                     </div>
                                 </div>
-                                <div className='py-4'>${product.current_price}</div>
+                                <div className='py-4'>${product.current_price * product.quantity}</div>
                             </div>
                         ))
                     )}
