@@ -3,10 +3,35 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useCart } from '@/context/CartContext';
+import { useState, useEffect } from 'react';
+
+export interface Product {
+    id: string;
+    name: string;
+    current_price: number;
+    photos: any;
+    quantity: number;
+}
 
 const CartComponent = () => {
+    const { cart, clearCart, removeFromCart } = useCart();
+    const [total, setTotal] = useState(0);
+
+    useEffect(() => {
+        let totalPrice = 0;
+        cart.forEach((product: Product) => {
+            totalPrice += product.current_price * product.quantity;
+        });
+        setTotal(totalPrice);
+    }, [cart]);
+
     const buttonVariants = {
         hover: { scale: 1.05 },
+    };
+
+    const handleRemoveFromCart = (productId: string) => {
+        removeFromCart(productId);
     };
 
     return (
@@ -15,7 +40,7 @@ const CartComponent = () => {
                 <p className='text-xl text-[#737373]'>Home / <span className='text-black'>Cart</span></p>
             </div>
             <div className='py-16 pl-2.5 md:px-10'>
-                <table className='w-full border-collapse'>
+                <table suppressHydrationWarning className='w-full border-collapse'>
                     <thead>
                         <tr className='border-b'>
                             <th className='md:py-8 md:px-6 py-6 px-4 text-left'>Product</th>
@@ -25,37 +50,30 @@ const CartComponent = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr className='border-b'>
-                            <td className='md:py-8 md:px-6 py-6 px-4 flex items-center gap-2 md:gap-4'>
-                                <div className='relative'>
-                                    <Image src="icon-cancel.svg" alt="cancel" width={20} height={20} className='cursor-pointer absolute left-[-10px]' />
-                                    <Image src="/sofia-chair.png" alt="chair" width={54} height={54} />
-                                </div>
-                                <div>
-                                    <p className='font-medium'>Sofia Chair</p>
-                                </div>
-                            </td>
-                            <td className='md:py-8 md:px-6 py-6 px-4'>$1240</td>
-                            <td className='md:py-8 md:px-6 py-6 px-4'>
-                                <input type="number" className='w-16 p-2 border rounded' defaultValue={1} />
-                            </td>
-                            <td className='md:py-8 md:px-6 py-6 px-4'>$1240</td>
-                        </tr>
-                        <tr className='border-b'>
-                            <td className='md:py-8 md:px-6 py-6 px-4 flex items-center gap-4'>
-                                <div>
-                                    <Image src="/sansa-chair.png" alt="chair" width={54} height={54} />
-                                </div>
-                                <div>
-                                    <p className='font-medium'>Sansa Chair</p>
-                                </div>
-                            </td>
-                            <td className='md:py-8 md:px-6 py-6 px-4'>$1000</td>
-                            <td className='md:py-8 md:px-6 py-6 px-4'>
-                                <input type="number" className='w-16 p-2 border rounded' defaultValue={2} />
-                            </td>
-                            <td className='md:py-8 md:px-6 py-6 px-4'>$2000</td>
-                        </tr>
+                        {cart.length === 0 ? (
+                            <p>Your cart is empty.</p>
+                        ) : (
+                            cart.map((product: Product, index: number) => (
+                                <tr key={index} className='border-b'>
+                                    <td className='md:py-8 md:px-6 py-6 px-4 flex items-center gap-2 md:gap-4'>
+                                        <div className='relative'>
+                                            <Image onClick={() => handleRemoveFromCart(product.id)} src="icon-cancel.svg" alt="cancel" width={20} height={20} className='cursor-pointer absolute left-[-10px]' />
+                                            <Image src={product.photos?.length > 0
+                                                ? `https://api.timbu.cloud/images/${product.photos[0].url}`
+                                                : 'https://api.timbu.cloud/images/default_image.jpg'} alt="chair" width={54} height={54} />
+                                        </div>
+                                        <div>
+                                            <p className='font-medium'>{product.name}</p>
+                                        </div>
+                                    </td>
+                                    <td className='md:py-8 md:px-6 py-6 px-4'>${product.current_price}</td>
+                                    <td className='md:py-8 md:px-6 py-6 px-4'>
+                                        <input type="number" className='w-16 p-2 border rounded' defaultValue={product.quantity} />
+                                    </td>
+                                    <td className='md:py-8 md:px-6 py-6 px-4'>${product.current_price * product.quantity}</td>
+                                </tr>
+                            ))
+                        )}
                     </tbody>
                 </table>
                 <div className='flex justify-between mt-6'>
@@ -73,7 +91,7 @@ const CartComponent = () => {
                         <h6 className='font-medium text-xl mb-2'>Cart Total</h6>
                         <div className='flex justify-between md:gap-72 py-4 border-b'>
                             <p>SubTotal:</p>
-                            <p>$3240</p>
+                            <p>${total}</p>
                         </div>
                         <div className='flex justify-between py-4 border-b'>
                             <p>Shipping:</p>
@@ -81,7 +99,7 @@ const CartComponent = () => {
                         </div>
                         <div className='flex justify-between py-4 border-b'>
                             <p>Total:</p>
-                            <p>$3240</p>
+                            <p>${total}</p>
                         </div>
                         <div className='flex justify-center mt-4'>
                             <Link href="/checkout"><motion.button variants={buttonVariants} whileHover="hover" className="bg-[#FF8933] text-white text-base font-bold rounded py-[12px] px-10">Proceed to Checkout</motion.button></Link>

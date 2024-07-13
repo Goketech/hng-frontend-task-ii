@@ -26,7 +26,6 @@ const CheckoutComponent = () => {
     };
 
     useEffect(() => {
-        // Calculate total when cart changes
         let totalPrice = 0;
         cart.forEach((product: Product) => {
             totalPrice += product.current_price * product.quantity;

@@ -39,7 +39,7 @@ const Nav = () => {
                     {/* <Link href="/">New In</Link> */}
                     <motion.a variants={textVariants} whileHover="hover" href="/checkout">Checkout</motion.a>
                     {/* <Link href="/">About Us</Link> */}
-                    <motion.a variants={textVariants} whileHover="hover" href="/">Cart</motion.a>
+                    <motion.a variants={textVariants} whileHover="hover" href="/cart">Cart</motion.a>
                 </div>
                 <div className="flex gap-4 mr-6">
                     {/* <Image
