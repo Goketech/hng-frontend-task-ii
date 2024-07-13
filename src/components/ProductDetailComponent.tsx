@@ -4,7 +4,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import ProductCard from './ProductCard';
-import { ProductProps } from '../app/products/[id]/page'
 
 interface ProductCardProps {
     product: any;
