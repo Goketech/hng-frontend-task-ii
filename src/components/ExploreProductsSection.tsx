@@ -102,7 +102,7 @@ const ExploreProductsSection = () => {
                             setCurrentSection('explore');
                         }}
                         whileHover={{ scale: 1.05 }}
-                        className="text-white rounded-full border px-6 py-2.5 bg-[#FF8933]"
+                        className={`${currentSection === 'explore' ? 'text-white rounded-full border px-6 py-2.5 bg-[#FF8933]' : 'rounded-full border px-6 py-2.5 border-[#FF8933]'}`}
                     >
                         All
                     </motion.button>
@@ -111,7 +111,7 @@ const ExploreProductsSection = () => {
                             setCurrentSection('chair');
                         }}
                         whileHover={{ scale: 1.05 }}
-                        className="rounded-full border px-6 py-2.5 border-[#FF8933]"
+                        className={`${currentSection === 'chair' ? 'text-white rounded-full border px-6 py-2.5 bg-[#FF8933]' : 'rounded-full border px-6 py-2.5 border-[#FF8933]'}`}
                     >
                         Chairs
                     </motion.button>
@@ -120,7 +120,7 @@ const ExploreProductsSection = () => {
                             setCurrentSection('dining');
                         }}
                         whileHover={{ scale: 1.05 }}
-                        className="rounded-full border px-6 py-2.5 border-[#FF8933]"
+                        className={`${currentSection === 'dining' ? 'text-white rounded-full border px-6 py-2.5 bg-[#FF8933]' : 'rounded-full border px-6 py-2.5 border-[#FF8933]'}`}
                     >
                         Dining Set
                     </motion.button>
@@ -129,7 +129,7 @@ const ExploreProductsSection = () => {
                             setCurrentSection('sofa');
                         }}
                         whileHover={{ scale: 1.05 }}
-                        className="rounded-full border px-6 py-2.5 border-[#FF8933]"
+                        className={`${currentSection === 'sofa' ? 'text-white rounded-full border px-6 py-2.5 bg-[#FF8933]' : 'rounded-full border px-6 py-2.5 border-[#FF8933]'}`}
                     >
                         Sofa Set
                     </motion.button>
@@ -138,7 +138,7 @@ const ExploreProductsSection = () => {
                             setCurrentSection('side');
                         }}
                         whileHover={{ scale: 1.05 }}
-                        className="rounded-full border px-6 py-2.5 border-[#FF8933]"
+                        className={`${currentSection === 'side' ? 'text-white rounded-full border px-6 py-2.5 bg-[#FF8933]' : 'rounded-full border px-6 py-2.5 border-[#FF8933]'}`}
                     >
                         Side Table
                     </motion.button>
@@ -147,7 +147,7 @@ const ExploreProductsSection = () => {
                             setCurrentSection('accessory');
                         }}
                         whileHover={{ scale: 1.05 }}
-                        className="rounded-full border px-6 py-2.5 border-[#FF8933]"
+                        className={`${currentSection === 'accessory' ? 'text-white rounded-full border px-6 py-2.5 bg-[#FF8933]' : 'rounded-full border px-6 py-2.5 border-[#FF8933]'}`}
                     >
                         Accessories
                     </motion.button>
@@ -168,11 +168,161 @@ const ExploreProductsSection = () => {
                                 }
                             />
                         ))}
+                    {currentSection === 'chair' &&
+                        chairProducts.map((product) => (
+                            <ProductCard
+                                key={product.id}
+                                title={product.name}
+                                numberOfRatings={85}
+                                oldPrice={product.current_price[0].USD[0]}
+                                newPrice={product.current_price[0].USD[1]}
+                                productImage={
+                                    product.photos.length > 0
+                                        ? `https://api.timbu.cloud/images/${product.photos[0].url}`
+                                        : 'https://api.timbu.cloud/images/default_image.jpg'
+                                }
+                            />
+                        ))}
+                    {currentSection === 'dining' &&
+                        diningProducts.map((product) => (
+                            <ProductCard
+                                key={product.id}
+                                title={product.name}
+                                numberOfRatings={85}
+                                oldPrice={product.current_price[0].USD[0]}
+                                newPrice={product.current_price[0].USD[1]}
+                                productImage={
+                                    product.photos.length > 0
+                                        ? `https://api.timbu.cloud/images/${product.photos[0].url}`
+                                        : 'https://api.timbu.cloud/images/default_image.jpg'
+                                }
+                            />
+                        ))}
+                    {currentSection === 'sofa' &&
+                        sofaProducts.map((product) => (
+                            <ProductCard
+                                key={product.id}
+                                title={product.name}
+                                numberOfRatings={85}
+                                oldPrice={product.current_price[0].USD[0]}
+                                newPrice={product.current_price[0].USD[1]}
+                                productImage={
+                                    product.photos.length > 0
+                                        ? `https://api.timbu.cloud/images/${product.photos[0].url}`
+                                        : 'https://api.timbu.cloud/images/default_image.jpg'
+                                }
+                            />
+                        ))}
+                    {currentSection === 'side' &&
+                        sideProducts.map((product) => (
+                            <ProductCard
+                                key={product.id}
+                                title={product.name}
+                                numberOfRatings={85}
+                                oldPrice={product.current_price[0].USD[0]}
+                                newPrice={product.current_price[0].USD[1]}
+                                productImage={
+                                    product.photos.length > 0
+                                        ? `https://api.timbu.cloud/images/${product.photos[0].url}`
+                                        : 'https://api.timbu.cloud/images/default_image.jpg'
+                                }
+                            />
+                        ))}
+                    {currentSection === 'accessory' &&
+                        accessoryProducts.map((product) => (
+                            <ProductCard
+                                key={product.id}
+                                title={product.name}
+                                numberOfRatings={85}
+                                oldPrice={product.current_price[0].USD[0]}
+                                newPrice={product.current_price[0].USD[1]}
+                                productImage={
+                                    product.photos.length > 0
+                                        ? `https://api.timbu.cloud/images/${product.photos[0].url}`
+                                        : 'https://api.timbu.cloud/images/default_image.jpg'
+                                }
+                            />
+                        ))}
 
                 </div>
-                <div className="hidden md:grid grid-cols-4 gap-6">
+                <div className="hidden md:grid grid-cols-4 gap-x-0 gap-y-4">
+                    {currentSection === 'chair' &&
+                        chairProducts.map((product) => (
+                            <ProductCard
+                                key={product.id}
+                                title={product.name}
+                                numberOfRatings={85}
+                                oldPrice={product.current_price[0].USD[0]}
+                                newPrice={product.current_price[0].USD[1]}
+                                productImage={
+                                    product.photos.length > 0
+                                        ? `https://api.timbu.cloud/images/${product.photos[0].url}`
+                                        : 'https://api.timbu.cloud/images/default_image.jpg'
+                                }
+                            />
+                        ))}
                     {currentSection === 'explore' &&
                         exploreProducts.map((product) => (
+                            <ProductCard
+                                key={product.id}
+                                title={product.name}
+                                numberOfRatings={85}
+                                oldPrice={product.current_price[0].USD[0]}
+                                newPrice={product.current_price[0].USD[1]}
+                                productImage={
+                                    product.photos.length > 0
+                                        ? `https://api.timbu.cloud/images/${product.photos[0].url}`
+                                        : 'https://api.timbu.cloud/images/default_image.jpg'
+                                }
+                            />
+                        ))}
+                    {currentSection === 'dining' &&
+                        diningProducts.map((product) => (
+                            <ProductCard
+                                key={product.id}
+                                title={product.name}
+                                numberOfRatings={85}
+                                oldPrice={product.current_price[0].USD[0]}
+                                newPrice={product.current_price[0].USD[1]}
+                                productImage={
+                                    product.photos.length > 0
+                                        ? `https://api.timbu.cloud/images/${product.photos[0].url}`
+                                        : 'https://api.timbu.cloud/images/default_image.jpg'
+                                }
+                            />
+                        ))}
+                    {currentSection === 'sofa' &&
+                        sofaProducts.map((product) => (
+                            <ProductCard
+                                key={product.id}
+                                title={product.name}
+                                numberOfRatings={85}
+                                oldPrice={product.current_price[0].USD[0]}
+                                newPrice={product.current_price[0].USD[1]}
+                                productImage={
+                                    product.photos.length > 0
+                                        ? `https://api.timbu.cloud/images/${product.photos[0].url}`
+                                        : 'https://api.timbu.cloud/images/default_image.jpg'
+                                }
+                            />
+                        ))}
+                    {currentSection === 'side' &&
+                        sideProducts.map((product) => (
+                            <ProductCard
+                                key={product.id}
+                                title={product.name}
+                                numberOfRatings={85}
+                                oldPrice={product.current_price[0].USD[0]}
+                                newPrice={product.current_price[0].USD[1]}
+                                productImage={
+                                    product.photos.length > 0
+                                        ? `https://api.timbu.cloud/images/${product.photos[0].url}`
+                                        : 'https://api.timbu.cloud/images/default_image.jpg'
+                                }
+                            />
+                        ))}
+                    {currentSection === 'accessory' &&
+                        accessoryProducts.map((product) => (
                             <ProductCard
                                 key={product.id}
                                 title={product.name}
