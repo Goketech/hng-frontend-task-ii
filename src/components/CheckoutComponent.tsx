@@ -25,15 +25,8 @@ const CheckoutComponent = () => {
     };
 
     const handlePlaceOrder = () => {
-
         const requiredFields = ['firstName', 'streetAddress', 'city', 'phoneNumber', 'email'];
-        const formValid = requiredFields.every(field => {
-            const element = document.getElementById(field);
-            if (element instanceof HTMLInputElement) {
-                return !!element.value;
-            }
-            return false;
-        });
+        const formValid = requiredFields.every(field => !!(document.getElementById(field) as HTMLInputElement)?.value);
 
         if (!formValid) {
             setShowFormPopup(true);
@@ -57,7 +50,7 @@ const CheckoutComponent = () => {
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         // Check if all required fields are filled on any input change
         const requiredFields = ['firstName', 'streetAddress', 'city', 'phoneNumber', 'email'];
-        const formValid = requiredFields.every(field => !!document.getElementById(field)?.value);
+        const formValid = requiredFields.every(field => !!(document.getElementById(field) as HTMLInputElement)?.value);
         setFormFilled(formValid);
     };
 
