@@ -4,6 +4,16 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useCart } from '@/context/CartContext';
 
+
+export interface Product {
+    id: string;
+    name: string;
+    current_price: number;
+    photos: any;
+    quantity: number;
+  }
+  
+
 const CheckoutComponent = () => {
     const { cart, clearCart } = useCart();
 
@@ -58,7 +68,7 @@ const CheckoutComponent = () => {
                     {cart.length === 0 ? (
                         <p>Your cart is empty.</p>
                     ) : (
-                        cart.map((product, index) => (
+                        cart.map((product: Product, index: number) => (
                             <div key={index} className='py-2 px-4 flex items-center justify-between'>
                                 <div className='py-4 pr-4 flex items-center gap-4'>
                                     <div>
