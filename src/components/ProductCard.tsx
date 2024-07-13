@@ -10,14 +10,16 @@ interface CardProps {
     numberOfRatings: number;
     oldPrice: number;
     newPrice: number;
+    id: string;
 }
 
 const ProductCard: React.FC<CardProps> = ({
     title,
     productImage,
+    id,
     numberOfRatings, oldPrice, newPrice }) => {
     return (
-        <Link href="/productpage">
+        <Link href={`/products/${id}`}>
             <motion.div whileHover={{ scale: 1.05 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }} className='border relative rounded-lg md:mr-6 cursor-pointer'>
                 {/* <div className='p-4 mb-4 absolute right-4'>

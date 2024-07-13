@@ -65,10 +65,23 @@ const BestProductsSection = () => {
                 </div>
                 <h2 className='mt-2 text-2xl md:text-4xl font-semibold mb-10'>Best Selling Products</h2>
                 <div className="md:hidden grid gap-2 grid-cols-2">
-                    <ProductCard title="Azariah Chair" numberOfRatings={65} oldPrice={1160} newPrice={960} productImage="/azariah-chair.png" />
-                    <ProductCard title="Jayde Dinning Chair" numberOfRatings={65} oldPrice={1260} newPrice={940} productImage="/jayde-dinning-chair.png" />
-                    <ProductCard title="Wade Accessories" numberOfRatings={65} oldPrice={1060} newPrice={900} productImage="/wade-accessories.png" />
-                    <ProductCard title="Rue Sofa" numberOfRatings={65} oldPrice={1060} newPrice={900} productImage="/rue-sofa.png" />
+                    {bestProducts.map((product) => (
+                        <swiper-slide key={product.id}>
+                            <ProductCard
+                                id={product.id}
+                                key={product.id}
+                                title={product.name}
+                                numberOfRatings={85}
+                                oldPrice={product.current_price[0].USD[0]}
+                                newPrice={product.current_price[0].USD[1]}
+                                productImage={
+                                    product.photos.length > 0
+                                        ? `https://api.timbu.cloud/images/${product.photos[0].url}`
+                                        : 'https://api.timbu.cloud/images/default_image.jpg'
+                                }
+                            />
+                        </swiper-slide>
+                    ))}
                 </div>
                 <div className='hidden md:block'>
                     <swiper-container
@@ -79,6 +92,7 @@ const BestProductsSection = () => {
                         {bestProducts.map((product) => (
                             <swiper-slide key={product.id}>
                                 <ProductCard
+                                    id={product.id}
                                     key={product.id}
                                     title={product.name}
                                     numberOfRatings={85}
@@ -92,13 +106,6 @@ const BestProductsSection = () => {
                                 />
                             </swiper-slide>
                         ))}
-                        {/* <swiper-slide><ProductCard title="Sally Side Table" numberOfRatings={65} oldPrice={1200} newPrice={800} productImage="/sally-side-table.png" /></swiper-slide>
-                        <swiper-slide><ProductCard title="Dion Sofa" numberOfRatings={65} oldPrice={1160} newPrice={200} productImage="/dion-sofa.png" /></swiper-slide>
-                        <swiper-slide><ProductCard title="Khandy Accessories" numberOfRatings={65} oldPrice={1100} newPrice={800} productImage="/khandy-accessories.png" /></swiper-slide>
-                        <swiper-slide><ProductCard title="Dee Side Table" numberOfRatings={65} oldPrice={1340} newPrice={800} productImage="/dee-side-table.png" /></swiper-slide>
-                        <swiper-slide><ProductCard title="Rionna Chair" numberOfRatings={65} oldPrice={1340} newPrice={960} productImage="/rionna-chair.png" /></swiper-slide>
-                        <swiper-slide><ProductCard title="Lianna Sofa" numberOfRatings={65} oldPrice={1340} newPrice={1000} productImage="/lianna-sofa.png" /></swiper-slide>
-                        <swiper-slide><ProductCard title="Kelly Dining Set" numberOfRatings={65} oldPrice={1260} newPrice={800} productImage="/kelly-dining-set.png" /></swiper-slide> */}
                     </swiper-container>
                 </div>
             </div>

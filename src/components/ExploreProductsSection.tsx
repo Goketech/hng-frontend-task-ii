@@ -156,6 +156,7 @@ const ExploreProductsSection = () => {
                     {currentSection === 'explore' &&
                         exploreProducts.map((product) => (
                             <ProductCard
+                                id={product.id}
                                 key={product.id}
                                 title={product.name}
                                 numberOfRatings={85}
@@ -171,6 +172,7 @@ const ExploreProductsSection = () => {
                     {currentSection === 'chair' &&
                         chairProducts.map((product) => (
                             <ProductCard
+                                id={product.id}
                                 key={product.id}
                                 title={product.name}
                                 numberOfRatings={85}
@@ -186,6 +188,7 @@ const ExploreProductsSection = () => {
                     {currentSection === 'dining' &&
                         diningProducts.map((product) => (
                             <ProductCard
+                                id={product.id}
                                 key={product.id}
                                 title={product.name}
                                 numberOfRatings={85}
@@ -201,6 +204,7 @@ const ExploreProductsSection = () => {
                     {currentSection === 'sofa' &&
                         sofaProducts.map((product) => (
                             <ProductCard
+                                id={product.id}
                                 key={product.id}
                                 title={product.name}
                                 numberOfRatings={85}
@@ -216,6 +220,7 @@ const ExploreProductsSection = () => {
                     {currentSection === 'side' &&
                         sideProducts.map((product) => (
                             <ProductCard
+                                id={product.id}
                                 key={product.id}
                                 title={product.name}
                                 numberOfRatings={85}
@@ -231,6 +236,7 @@ const ExploreProductsSection = () => {
                     {currentSection === 'accessory' &&
                         accessoryProducts.map((product) => (
                             <ProductCard
+                                id={product.id}
                                 key={product.id}
                                 title={product.name}
                                 numberOfRatings={85}
@@ -249,6 +255,7 @@ const ExploreProductsSection = () => {
                     {currentSection === 'chair' &&
                         chairProducts.map((product) => (
                             <ProductCard
+                                id={product.id}
                                 key={product.id}
                                 title={product.name}
                                 numberOfRatings={85}
@@ -264,6 +271,7 @@ const ExploreProductsSection = () => {
                     {currentSection === 'explore' &&
                         exploreProducts.map((product) => (
                             <ProductCard
+                                id={product.id}
                                 key={product.id}
                                 title={product.name}
                                 numberOfRatings={85}
@@ -279,6 +287,7 @@ const ExploreProductsSection = () => {
                     {currentSection === 'dining' &&
                         diningProducts.map((product) => (
                             <ProductCard
+                                id={product.id}
                                 key={product.id}
                                 title={product.name}
                                 numberOfRatings={85}
@@ -294,6 +303,7 @@ const ExploreProductsSection = () => {
                     {currentSection === 'sofa' &&
                         sofaProducts.map((product) => (
                             <ProductCard
+                                id={product.id}
                                 key={product.id}
                                 title={product.name}
                                 numberOfRatings={85}
@@ -309,6 +319,7 @@ const ExploreProductsSection = () => {
                     {currentSection === 'side' &&
                         sideProducts.map((product) => (
                             <ProductCard
+                                id={product.id}
                                 key={product.id}
                                 title={product.name}
                                 numberOfRatings={85}
@@ -324,6 +335,7 @@ const ExploreProductsSection = () => {
                     {currentSection === 'accessory' &&
                         accessoryProducts.map((product) => (
                             <ProductCard
+                                id={product.id}
                                 key={product.id}
                                 title={product.name}
                                 numberOfRatings={85}

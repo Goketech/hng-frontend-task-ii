@@ -1,21 +1,40 @@
 "use client"
 
+import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import ProductCard from './ProductCard';
+import { ProductProps } from '../app/products/[id]/page'
 
-const ProductDetailComponent = () => {
+interface ProductCardProps {
+    product: any;
+}
+
+const ProductDetailComponent: React.FC<ProductCardProps> = ({ product }) => {
+
+    if (typeof product !== 'object' || product === null) {
+        return (
+          <div className="error-container">
+            <h2>Error: Product not found</h2>
+          </div>
+        );
+      }
+
     return (
         <div className='max-w-screen-2xl 2xl:mx-auto'>
             <div className='pl-2.5 md:pl-10 mt-20'>
-                <p className='text-xl text-[#737373]'>Home / Category / Chair / <span className='text-black'>Sofia Chair</span></p>
+                <p className='text-xl text-[#737373]'>Home / Category / Chair / <span className='text-black'>{product.name}</span></p>
             </div>
             <div className="flex flex-col md:flex-row px-2.5 md:px-28 py-16 justify-between">
                 <div className="h-[655px] w-full md:w-[645px] relative">
-                    <Image layout="fill" objectFit="contain" className="max-w-full max-h-full" src="/sofia-chair.png" alt="chair" />
+                    <Image layout="fill" objectFit="contain" className="max-w-full max-h-full" src={
+                        product.photos?.length > 0
+                            ? `https://api.timbu.cloud/images/${product.photos[0].url}`
+                            : 'https://api.timbu.cloud/images/default_image.jpg'
+                    } alt="chair" />
                 </div>
                 <div className='flex flex-col w-[373px]'>
-                    <h3 className='font-semibold text-2xl mb-4'>Sofia Chair</h3>
+                    <h3 className='font-semibold text-2xl mb-4'>{product.name}</h3>
                     <div className="flex gap-2 pb-4">
                         <div className="flex gap-1">
                             <Image src="/full-star.svg" alt="star" width={20} height={20} />
@@ -28,12 +47,9 @@ const ProductDetailComponent = () => {
                             (150 Reviews) | <span className='text-[#00FF66]'>In Stock</span>
                         </p>
                     </div>
-                    <h5 className='text-2xl mb-6'>$1240.00</h5>
+                    <h5 className='text-2xl mb-6'>${product.current_price}</h5>
                     <p className='pb-6 mb-6 border-b-2'>
-                        Enjoy unparalleled comfort and timeless elegance with the Sofia Chair.
-                        Meticulously crafted to perfection, this chair combines sophisticated
-                        design with the finest materials, making it the quintessential addition
-                        to any luxurious living space.
+                        {product.description}
                     </p>
                     <div className='flex gap-5'>
                         <div className='border rounded border-r-0'>
@@ -71,10 +87,10 @@ const ProductDetailComponent = () => {
                     </div>
                 </div>
                 <div className=' grid gap-2 md:gap-0 grid-cols-2 mt-2 md:mt-0 md:flex mb-48'>
-                    <ProductCard title="Kelly Chair" numberOfRatings={65} oldPrice={1160} newPrice={960} productImage="/kelly-chair.png" />
-                    <ProductCard title="Liam Chair" numberOfRatings={65} oldPrice={1260} newPrice={940} productImage="/sansa-chair.png" />
-                    <ProductCard title="Sansa Chair" numberOfRatings={65} oldPrice={1060} newPrice={900} productImage="/lianna-sofa.png" />
-                    <ProductCard title="JPearl Chair" numberOfRatings={65} oldPrice={1060} newPrice={900} productImage="/pearl-chair.png" />
+                    <ProductCard id='add47a98dbb941889dd2c17b249cee7d' title="Kelly Chair" numberOfRatings={65} oldPrice={1160} newPrice={960} productImage="/kelly-chair.png" />
+                    <ProductCard id='36197ea5bc444fa69375f7c538fa61dc' title="Liam Chair" numberOfRatings={65} oldPrice={1260} newPrice={940} productImage="/sansa-chair.png" />
+                    <ProductCard id='51fde2be5cd5490f9e052e824758acae' title="Lianna Sofa" numberOfRatings={65} oldPrice={1060} newPrice={900} productImage="/lianna-sofa.png" />
+                    <ProductCard id='670965f273fe4d21b8fb5e9630433360' title="Pearl Chair" numberOfRatings={65} oldPrice={1060} newPrice={900} productImage="/pearl-chair.png" />
                 </div>
             </div>
         </div>

@@ -59,6 +59,7 @@ const FlashSalesSection = () => {
                 <div className="md:hidden grid gap-2 grid-cols-2">
                     {flashProducts.map((product) => (
                         <Card
+                            id={product.id}
                             key={product.id}
                             discountPercentage="-35%"
                             title={product.name}
@@ -82,6 +83,7 @@ const FlashSalesSection = () => {
                         {flashProducts.map((product) => (
                             <swiper-slide key={product.id}>
                                 <Card
+                                    id={product.id}
                                     discountPercentage="-35%"
                                     title={product.name}
                                     numberOfRatings={85}
@@ -95,18 +97,6 @@ const FlashSalesSection = () => {
                                 />
                             </swiper-slide>
                         ))}
-                        {/* <swiper-slide><Card discountPercentage="-35%" title="Kabir Chair" numberOfRatings={88} oldPrice={160} newPrice={120} productImage="/kabir-chair.png" /></swiper-slide>
-                        <swiper-slide><Card discountPercentage="-35%" title="Asara Chair" numberOfRatings={86} oldPrice={160} newPrice={110} productImage="/asara-chair.png" /></swiper-slide>
-                        <swiper-slide><Card discountPercentage="-35%" title="Chidi Chair" numberOfRatings={85} oldPrice={160} newPrice={120} productImage="/chidi-chair.png" /></swiper-slide>
-                        <swiper-slide><Card discountPercentage="-35%" title="Zadok Chair" numberOfRatings={85} oldPrice={180} newPrice={110} productImage="/zadok-chair.png" /></swiper-slide>
-                        <swiper-slide><Card discountPercentage="-35%" title="Lanre Chair" numberOfRatings={85} oldPrice={170} newPrice={110} productImage="/lanre-chair.png" /></swiper-slide>
-                        <swiper-slide><Card discountPercentage="-35%" title="Ezra Chair" numberOfRatings={85} oldPrice={160} newPrice={100} productImage="/ezra-chair.png" /></swiper-slide>
-                        <swiper-slide><Card discountPercentage="-35%" title="Kelly Chair" numberOfRatings={85} oldPrice={1240} newPrice={920} productImage="/kelly-chair.png" /></swiper-slide>
-                        <swiper-slide><Card discountPercentage="-35%" title="Zoe Chair" numberOfRatings={85} oldPrice={1340} newPrice={960} productImage="/zoe-chair.png" /></swiper-slide>
-                        <swiper-slide><Card discountPercentage="-35%" title="Liam Chair" numberOfRatings={85} oldPrice={1340} newPrice={1000} productImage="/liam-chair.png" /></swiper-slide>
-                        <swiper-slide><Card discountPercentage="-35%" title="Zen Chair" numberOfRatings={85} oldPrice={1340} newPrice={1000} productImage="/zen-chair.png" /></swiper-slide>
-                        <swiper-slide><Card discountPercentage="-35%" title="Sofia Chair" numberOfRatings={85} oldPrice={1400} newPrice={1240} productImage="/sofia-chair.png" /></swiper-slide>
-                        <swiper-slide><Card discountPercentage="-35%" title="Pearl Chair" numberOfRatings={85} oldPrice={1340} newPrice={1260} productImage="/pearl-chair.png" /></swiper-slide> */}
                     </swiper-container>
                 </div>
             </div>

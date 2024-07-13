@@ -12,14 +12,16 @@ interface ProductCardProps {
     numberOfRatings: number;
     oldPrice: number;
     newPrice: number;
+    id: string;
 }
 
 const Card: React.FC<ProductCardProps> = ({ discountPercentage,
     title,
+    id,
     productImage,
     numberOfRatings, oldPrice, newPrice }) => {
     return (
-        <Link href="/productpage">
+        <Link href={`/products/${id}`}>
             <motion.div whileHover={{ scale: 1.05 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }} className='p-2 border rounded-lg md:mr-6 cursor-pointer'>
                 <div className='flex justify-between items-center h-auto'>
