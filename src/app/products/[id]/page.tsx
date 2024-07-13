@@ -11,7 +11,6 @@ export default function ProductDetailsPage({
 }: {
   params: { id: string }
 }) {
-  console.log("id", id)
   const [product, setProduct] = useState<any>({});
 
   useEffect(() => {
@@ -19,7 +18,6 @@ export default function ProductDetailsPage({
 
       const product = await fetchProduct(id)
       setProduct(product)
-      console.log("product", product)
     };
     getProducts();
   }, [id]);

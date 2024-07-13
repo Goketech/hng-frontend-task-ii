@@ -32,11 +32,9 @@ const ProductDetailComponent: React.FC<ProductCardProps> = ({ product }) => {
     };
 
     const handleAddToCart = () => {
-        console.log('product', product);
         addToCart({ ...product, quantity: count });
         setShowPopup(true);
         setTimeout(() => setShowPopup(false), 3000);
-        console.log('cart', cart);
     };
 
     return (

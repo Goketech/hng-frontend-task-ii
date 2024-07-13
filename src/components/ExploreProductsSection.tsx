@@ -32,7 +32,6 @@ const ExploreProductsSection = () => {
             const data = await fetchData(exploreId);
             if (data) {
                 setExploreProducts(data.items);
-                console.log(data);
             }
         };
 
@@ -40,7 +39,6 @@ const ExploreProductsSection = () => {
             const data = await fetchData(chairId);
             if (data) {
                 setChairProducts(data.items);
-                console.log(data);
             }
         };
 
@@ -48,7 +46,6 @@ const ExploreProductsSection = () => {
             const data = await fetchData(diningId);
             if (data) {
                 setDiningProducts(data.items);
-                console.log(data);
             }
         };
 
@@ -56,7 +53,6 @@ const ExploreProductsSection = () => {
             const data = await fetchData(sofaId);
             if (data) {
                 setSofaProducts(data.items);
-                console.log(data);
             }
         };
 
@@ -64,7 +60,6 @@ const ExploreProductsSection = () => {
             const data = await fetchData(sideId);
             if (data) {
                 setSideProducts(data.items);
-                console.log(data);
             }
         };
 
@@ -72,7 +67,6 @@ const ExploreProductsSection = () => {
             const data = await fetchData(accessoryId);
             if (data) {
                 setAccessoryProducts(data.items);
-                console.log(data);
             }
         };
 

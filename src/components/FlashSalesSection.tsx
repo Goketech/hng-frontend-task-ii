@@ -42,7 +42,6 @@ const FlashSalesSection = () => {
             const data = await fetchData(flashSaleId);
             if (data) {
                 setFlashProducts(data.items);
-                console.log(data);
             }
         };
 

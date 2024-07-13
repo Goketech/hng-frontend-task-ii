@@ -42,7 +42,6 @@ const BestProductsSection = () => {
             const data = await fetchData(bestSaleId);
             if (data) {
                 setBestProducts(data.items);
-                console.log(data);
             }
         };
 
