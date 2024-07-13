@@ -3,8 +3,12 @@
 import { motion } from 'framer-motion';
 import Image from "next/image";
 import Link from "next/link";
+import { useCart } from '@/context/CartContext';
 
 const Nav = () => {
+    const { cart } = useCart();
+    const cartLength = cart.length;
+
     const textVariants = {
         hover: { scale: 1.1 },
     };
@@ -47,14 +51,21 @@ const Nav = () => {
                         priority
                     /> */}
                     <Link href="/cart">
-                        <motion.img
-                            className="cursor-pointer"
-                            src="/cart-icon.svg"
-                            alt="cart"
-                            width={32}
-                            height={32}
-                            whileHover={{ scale: 1.1 }}
-                        />
+                        <div className='relative'>
+                            <motion.img
+                                className="cursor-pointer"
+                                src="/cart-icon.svg"
+                                alt="cart"
+                                width={32}
+                                height={32}
+                                whileHover={{ scale: 1.1 }}
+                            />
+                            {cartLength > 0 && (
+                                <div className="absolute top-0 right-0 bg-red-500 rounded-full w-4 h-4 flex justify-center items-center text-xs font-bold text-white">
+                                    {cartLength}
+                                </div>
+                            )}
+                        </div>
                     </Link>
                     <motion.img
                         className="cursor-pointer"
