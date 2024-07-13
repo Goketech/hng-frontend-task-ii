@@ -1,15 +1,18 @@
 "use client"
 
 import { motion } from 'framer-motion';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Card from "./Card";
 import Image from "next/image";
 import Swiper from 'swiper';
 import 'swiper/swiper-bundle.css';
 import { register } from "swiper/element/bundle";
+import fetchData from '../utils/fetchData';
 
 const FlashSalesSection = () => {
     const swiperElRef = useRef<HTMLLinkElement | any>(null);
+    const [flashProducts, setFlashProducts] = useState<any[]>([]);
+    const flashSaleId = process.env.FLASH_SALE_ID;
 
     const buttonVariants = {
         hover: { scale: 1.05 },
@@ -34,6 +37,18 @@ const FlashSalesSection = () => {
         swiperContainer.slidePrev();
     };
 
+    useEffect(() => {
+        const getProducts = async () => {
+            const data = await fetchData(flashSaleId);
+            if (data) {
+                setFlashProducts(data.items);
+                console.log(data);
+            }
+        };
+
+        getProducts();
+    }, [flashSaleId]);
+
     return (
         <div className="max-w-screen-2xl 2xl:mx-auto">
             <div className="relative pl-2.5 md:pl-10">
@@ -53,7 +68,23 @@ const FlashSalesSection = () => {
                         slides-per-view="4"
                         init="false"
                     >
-                        <swiper-slide><Card discountPercentage="-35%" title="Kabir Chair" numberOfRatings={88} oldPrice={160} newPrice={120} productImage="/kabir-chair.png" /></swiper-slide>
+                        {flashProducts.map((product) => (
+                             <swiper-slide key={product.id}>
+                             <Card
+                                 discountPercentage="-35%"
+                                 title={product.name}
+                                 numberOfRatings={85}
+                                 oldPrice={product.current_price[0].USD[0]}
+                                 newPrice={product.current_price[0].USD[1]}
+                                 productImage={
+                                    product.photos.length > 0 
+                                    ? `https://api.timbu.cloud/images/${product.photos[0].url}`
+                                    : 'https://api.timbu.cloud/images/default_image.jpg' // Placeholder image if no photos are available
+                                }
+                             />
+                         </swiper-slide>
+                     ))}
+                        {/* <swiper-slide><Card discountPercentage="-35%" title="Kabir Chair" numberOfRatings={88} oldPrice={160} newPrice={120} productImage="/kabir-chair.png" /></swiper-slide>
                         <swiper-slide><Card discountPercentage="-35%" title="Asara Chair" numberOfRatings={86} oldPrice={160} newPrice={110} productImage="/asara-chair.png" /></swiper-slide>
                         <swiper-slide><Card discountPercentage="-35%" title="Chidi Chair" numberOfRatings={85} oldPrice={160} newPrice={120} productImage="/chidi-chair.png" /></swiper-slide>
                         <swiper-slide><Card discountPercentage="-35%" title="Zadok Chair" numberOfRatings={85} oldPrice={180} newPrice={110} productImage="/zadok-chair.png" /></swiper-slide>
@@ -64,7 +95,7 @@ const FlashSalesSection = () => {
                         <swiper-slide><Card discountPercentage="-35%" title="Liam Chair" numberOfRatings={85} oldPrice={1340} newPrice={1000} productImage="/liam-chair.png" /></swiper-slide>
                         <swiper-slide><Card discountPercentage="-35%" title="Zen Chair" numberOfRatings={85} oldPrice={1340} newPrice={1000} productImage="/zen-chair.png" /></swiper-slide>
                         <swiper-slide><Card discountPercentage="-35%" title="Sofia Chair" numberOfRatings={85} oldPrice={1400} newPrice={1240} productImage="/sofia-chair.png" /></swiper-slide>
-                        <swiper-slide><Card discountPercentage="-35%" title="Pearl Chair" numberOfRatings={85} oldPrice={1340} newPrice={1260} productImage="/pearl-chair.png" /></swiper-slide>
+                        <swiper-slide><Card discountPercentage="-35%" title="Pearl Chair" numberOfRatings={85} oldPrice={1340} newPrice={1260} productImage="/pearl-chair.png" /></swiper-slide> */}
                     </swiper-container>
                 </div>
             </div>
