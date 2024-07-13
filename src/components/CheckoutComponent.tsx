@@ -25,9 +25,15 @@ const CheckoutComponent = () => {
     };
 
     const handlePlaceOrder = () => {
-        // Check if all required fields are filled
+
         const requiredFields = ['firstName', 'streetAddress', 'city', 'phoneNumber', 'email'];
-        const formValid = requiredFields.every(field => !!(document.getElementById(field) as HTMLInputElement)?.value);
+        const formValid = requiredFields.every(field => {
+            const element = document.getElementById(field);
+            if (element instanceof HTMLInputElement) {
+                return !!element.value;
+            }
+            return false;
+        });
 
         if (!formValid) {
             setShowFormPopup(true);
