@@ -79,6 +79,7 @@ const BestProductsSection = () => {
                         {bestProducts.map((product) => (
                             <swiper-slide key={product.id}>
                                 <ProductCard
+                                    key={product.id}
                                     title={product.name}
                                     numberOfRatings={85}
                                     oldPrice={product.current_price[0].USD[0]}

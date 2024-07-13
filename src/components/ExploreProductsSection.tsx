@@ -1,57 +1,204 @@
-"use client"
+'use client';
 
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import Image from "next/image";
+import Image from 'next/image';
 import ProductCard from './ProductCard';
+import fetchData from '../utils/fetchData';
 
 const ExploreProductsSection = () => {
+    const [exploreProducts, setExploreProducts] = useState<any[]>([]);
+    const [chairProducts, setChairProducts] = useState<any[]>([]);
+    const [diningProducts, setDiningProducts] = useState<any[]>([]);
+    const [sofaProducts, setSofaProducts] = useState<any[]>([]);
+    const [sideProducts, setSideProducts] = useState<any[]>([]);
+    const [accessoryProducts, setAccessoryProducts] = useState<any[]>([]);
+    const [currentSection, setCurrentSection] = useState<string>('explore');
+    const exploreId =
+        process.env.NEXT_PUBLIC_EXPLORE_ID || 'default_best_sale_id';
+    const chairId = process.env.NEXT_PUBLIC_CHAIR_ID || 'default_best_sale_id';
+    const diningId = process.env.NEXT_PUBLIC_DINING_ID || 'default_best_sale_id';
+    const sofaId = process.env.NEXT_PUBLIC_SOFA_ID || 'default_best_sale_id';
+    const sideId = process.env.NEXT_PUBLIC_SIDE_ID || 'default_best_sale_id';
+    const accessoryId =
+        process.env.NEXT_PUBLIC_ACCESSORY_ID || 'default_best_sale_id';
+
     const buttonVariants = {
         hover: { scale: 1.05 },
     };
 
+    useEffect(() => {
+        const getExploreProducts = async () => {
+            const data = await fetchData(exploreId);
+            if (data) {
+                setExploreProducts(data.items);
+                console.log(data);
+            }
+        };
+
+        const getChairProducts = async () => {
+            const data = await fetchData(chairId);
+            if (data) {
+                setChairProducts(data.items);
+                console.log(data);
+            }
+        };
+
+        const getDiningProducts = async () => {
+            const data = await fetchData(diningId);
+            if (data) {
+                setDiningProducts(data.items);
+                console.log(data);
+            }
+        };
+
+        const getSofaProducts = async () => {
+            const data = await fetchData(sofaId);
+            if (data) {
+                setSofaProducts(data.items);
+                console.log(data);
+            }
+        };
+
+        const getSideProducts = async () => {
+            const data = await fetchData(sideId);
+            if (data) {
+                setSideProducts(data.items);
+                console.log(data);
+            }
+        };
+
+        const getAccessoryProducts = async () => {
+            const data = await fetchData(accessoryId);
+            if (data) {
+                setAccessoryProducts(data.items);
+                console.log(data);
+            }
+        };
+
+        getExploreProducts();
+        getChairProducts();
+        getDiningProducts();
+        getSofaProducts();
+        getSideProducts();
+        getAccessoryProducts();
+    }, []);
+
     return (
         <div className="max-w-screen-2xl 2xl:mx-auto">
-            <div className='px-2.5 md:px-10'>
+            <div className="px-2.5 md:px-10">
                 <div className="flex gap-3 md:gap-6">
                     <div className="bg-[#FF8933] rounded w-4 md:w-8 h-[85px] md:h-[100px]"></div>
-                    <div className='flex items-center'>
-                        <p className='text-[#FF8933] font-semibold'>Our Products</p>
+                    <div className="flex items-center">
+                        <p className="text-[#FF8933] font-semibold">Our Products</p>
                     </div>
                 </div>
-                <h2 className='mt-2 text-2xl md:text-4xl font-semibold mb-4'>Explore Our Products</h2>
-                <div className='hidden md:flex gap-7 mb-36'>
-                    <motion.button whileHover={{ scale: 1.05 }} className='text-white rounded-full border px-6 py-2.5 bg-[#FF8933]'>All</motion.button>
-                    <motion.button whileHover={{ scale: 1.05 }} className='rounded-full border px-6 py-2.5 border-[#FF8933]'>Chairs</motion.button>
-                    <motion.button whileHover={{ scale: 1.05 }} className='rounded-full border px-6 py-2.5 border-[#FF8933]'>Dining Set</motion.button>
-                    <motion.button whileHover={{ scale: 1.05 }} className='rounded-full border px-6 py-2.5 border-[#FF8933]'>Sofa Set</motion.button>
-                    <motion.button whileHover={{ scale: 1.05 }} className='rounded-full border px-6 py-2.5 border-[#FF8933]'>Side Table</motion.button>
-                    <motion.button whileHover={{ scale: 1.05 }} className='rounded-full border px-6 py-2.5 border-[#FF8933]'>Accessories</motion.button>
+                <h2 className="mt-2 text-2xl md:text-4xl font-semibold mb-4">
+                    Explore Our Products
+                </h2>
+                <div className="hidden md:flex gap-7 mb-36">
+                    <motion.button
+                        onClick={() => {
+                            setCurrentSection('explore');
+                        }}
+                        whileHover={{ scale: 1.05 }}
+                        className="text-white rounded-full border px-6 py-2.5 bg-[#FF8933]"
+                    >
+                        All
+                    </motion.button>
+                    <motion.button
+                        onClick={() => {
+                            setCurrentSection('chair');
+                        }}
+                        whileHover={{ scale: 1.05 }}
+                        className="rounded-full border px-6 py-2.5 border-[#FF8933]"
+                    >
+                        Chairs
+                    </motion.button>
+                    <motion.button
+                        onClick={() => {
+                            setCurrentSection('dining');
+                        }}
+                        whileHover={{ scale: 1.05 }}
+                        className="rounded-full border px-6 py-2.5 border-[#FF8933]"
+                    >
+                        Dining Set
+                    </motion.button>
+                    <motion.button
+                        onClick={() => {
+                            setCurrentSection('sofa');
+                        }}
+                        whileHover={{ scale: 1.05 }}
+                        className="rounded-full border px-6 py-2.5 border-[#FF8933]"
+                    >
+                        Sofa Set
+                    </motion.button>
+                    <motion.button
+                        onClick={() => {
+                            setCurrentSection('side');
+                        }}
+                        whileHover={{ scale: 1.05 }}
+                        className="rounded-full border px-6 py-2.5 border-[#FF8933]"
+                    >
+                        Side Table
+                    </motion.button>
+                    <motion.button
+                        onClick={() => {
+                            setCurrentSection('accessory');
+                        }}
+                        whileHover={{ scale: 1.05 }}
+                        className="rounded-full border px-6 py-2.5 border-[#FF8933]"
+                    >
+                        Accessories
+                    </motion.button>
                 </div>
-                <div className='grid grid-cols-2 gap-2 md:hidden'>
-                    <ProductCard title="Zaron Side Table" numberOfRatings={65} oldPrice={1160} newPrice={960} productImage="/zaron-side-table.png" />
-                    <ProductCard title="Shally Chair" numberOfRatings={65} oldPrice={1260} newPrice={940} productImage="/shally-chair.png" />
-                    <ProductCard title="Lianna Sofa" numberOfRatings={65} oldPrice={1060} newPrice={900} productImage="/lianna-sofa.png" />
-                    <ProductCard title="Jayde Dinning Chair" numberOfRatings={65} oldPrice={1060} newPrice={900} productImage="/jayde-dinning-chair.png" />
+                <div className="grid grid-cols-2 gap-2 md:hidden">
+                    {currentSection === 'explore' &&
+                        exploreProducts.map((product) => (
+                            <ProductCard
+                                key={product.id}
+                                title={product.name}
+                                numberOfRatings={85}
+                                oldPrice={product.current_price[0].USD[0]}
+                                newPrice={product.current_price[0].USD[1]}
+                                productImage={
+                                    product.photos.length > 0
+                                        ? `https://api.timbu.cloud/images/${product.photos[0].url}`
+                                        : 'https://api.timbu.cloud/images/default_image.jpg'
+                                }
+                            />
+                        ))}
 
                 </div>
-                <div className='hidden md:flex gap-6 mb-[71px]'>
-                    <ProductCard title="Zaron Side Table" numberOfRatings={65} oldPrice={1160} newPrice={960} productImage="/zaron-side-table.png" />
-                    <ProductCard title="Shally Chair" numberOfRatings={65} oldPrice={1260} newPrice={940} productImage="/shally-chair.png" />
-                    <ProductCard title="Lianna Sofa" numberOfRatings={65} oldPrice={1060} newPrice={900} productImage="/lianna-sofa.png" />
-                    <ProductCard title="Jayde Dinning Chair" numberOfRatings={65} oldPrice={1060} newPrice={900} productImage="/jayde-dinning-chair.png" />
-                </div>
-                <div className='hidden md:flex gap-6'>
-                    <ProductCard title="Amelia Sofa" numberOfRatings={65} oldPrice={1160} newPrice={960} productImage="/amelia-sofa.png" />
-                    <ProductCard title="Ene Chair" numberOfRatings={65} oldPrice={1260} newPrice={940} productImage="/ene-chair.png" />
-                    <ProductCard title="Venne Side Table" numberOfRatings={65} oldPrice={1060} newPrice={900} productImage="/venne-side-table.png" />
-                    <ProductCard title="Rionna Chair" numberOfRatings={65} oldPrice={1060} newPrice={900} productImage="/rionna-chair.png" />
+                <div className="hidden md:grid grid-cols-4 gap-6">
+                    {currentSection === 'explore' &&
+                        exploreProducts.map((product) => (
+                            <ProductCard
+                                key={product.id}
+                                title={product.name}
+                                numberOfRatings={85}
+                                oldPrice={product.current_price[0].USD[0]}
+                                newPrice={product.current_price[0].USD[1]}
+                                productImage={
+                                    product.photos.length > 0
+                                        ? `https://api.timbu.cloud/images/${product.photos[0].url}`
+                                        : 'https://api.timbu.cloud/images/default_image.jpg'
+                                }
+                            />
+                        ))}
                 </div>
             </div>
             <div className="ml-2.5 md:ml-10 m-10 pb-10 w-[85%] border-b mb-10">
-                <motion.button variants={buttonVariants} whileHover="hover" className="bg-[#FF8933] text-white text-lg font-semibold rounded py-4 px-12">Load More</motion.button>
+                <motion.button
+                    variants={buttonVariants}
+                    whileHover="hover"
+                    className="bg-[#FF8933] text-white text-lg font-semibold rounded py-4 px-12"
+                >
+                    Load More
+                </motion.button>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default ExploreProductsSection
+export default ExploreProductsSection;
