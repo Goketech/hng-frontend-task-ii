@@ -69,7 +69,7 @@ const ProductDetailComponent: React.FC<ProductCardProps> = ({ product }) => {
                             </div>
                         </div>
                         <div className='flex gap-4 p-4'>
-                            <Image src="/icon-return.svg" alt="icon-return" width={40} height={40} />
+                            <Image src="/Icon-return.svg" alt="icon-return" width={40} height={40} />
                             <div>
                                 <h6 className='font-medium text-base mb-2'>Return Delivery</h6>
                                 <p className='font-medium text-xs'>Free 30 Days Delivery Returns. <span className='underline'>Details</span> </p>
