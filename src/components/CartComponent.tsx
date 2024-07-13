@@ -15,7 +15,7 @@ export interface Product {
 }
 
 const CartComponent = () => {
-    const { cart, clearCart, removeFromCart } = useCart();
+    const { cart, clearCart, removeFromCart, updateCart } = useCart();
     const [total, setTotal] = useState(0);
 
     useEffect(() => {
@@ -32,6 +32,19 @@ const CartComponent = () => {
 
     const handleRemoveFromCart = (productId: string) => {
         removeFromCart(productId);
+    };
+
+    const handleQuantityChange = (
+        event: React.ChangeEvent<HTMLInputElement>,
+        productId: string
+    ) => {
+        const newQuantity = parseInt(event.target.value);
+        if (newQuantity >= 1 && newQuantity <= 20) {
+            const updatedCart = cart.map((product: Product) =>
+                product.id === productId ? { ...product, quantity: newQuantity } : product
+            );
+            updateCart(updatedCart);
+        }
     };
 
     return (
@@ -68,7 +81,10 @@ const CartComponent = () => {
                                     </td>
                                     <td className='md:py-8 md:px-6 py-6 px-4'>${product.current_price}</td>
                                     <td className='md:py-8 md:px-6 py-6 px-4'>
-                                        <input type="number" className='w-16 p-2 border rounded' defaultValue={product.quantity} />
+                                        <input type="number" className='w-16 p-2 border rounded' value={product.quantity}
+                                            min={1}
+                                            max={20}
+                                            onChange={(e) => handleQuantityChange(e, product.id)} />
                                     </td>
                                     <td className='md:py-8 md:px-6 py-6 px-4'>${product.current_price * product.quantity}</td>
                                 </tr>
