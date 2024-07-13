@@ -4,10 +4,12 @@ import { motion } from 'framer-motion';
 import Image from "next/image";
 import Link from "next/link";
 import { useCart } from '@/context/CartContext';
+import { usePathname } from 'next/navigation';
 
 const Nav = () => {
     const { cart } = useCart();
     const cartLength = cart.length;
+    const pathname = usePathname()
 
     const textVariants = {
         hover: { scale: 1.1 },
@@ -35,11 +37,11 @@ const Nav = () => {
                     <h1 className="font-bold text-2xl"><Link href="/">Duexe</Link></h1>
                 </div>
                 <div className="hidden md:flex ml-8 flex gap-12">
-                    <motion.a variants={textVariants} whileHover="hover" href="/" className="underline decoration-[#FF8933]">Shop</motion.a>
+                    <motion.a variants={textVariants} whileHover="hover" href="/" className={pathname === '/' ? 'underline decoration-[#FF8933]' : ''}>Shop</motion.a>
                     {/* <Link href="/">New In</Link> */}
-                    <motion.a variants={textVariants} whileHover="hover" href="/checkout">Checkout</motion.a>
+                    <motion.a variants={textVariants} whileHover="hover" href="/checkout" className={pathname === '/checkout' ? 'underline decoration-[#FF8933]' : ''}>Checkout</motion.a>
                     {/* <Link href="/">About Us</Link> */}
-                    <motion.a variants={textVariants} whileHover="hover" href="/cart">Cart</motion.a>
+                    <motion.a variants={textVariants} whileHover="hover" href="/cart" className={pathname === '/cart' ? 'underline decoration-[#FF8933]' : ''}>Cart</motion.a>
                 </div>
                 <div className="flex gap-4 mr-6">
                     {/* <Image
