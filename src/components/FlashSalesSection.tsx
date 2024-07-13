@@ -12,7 +12,7 @@ import fetchData from '../utils/fetchData';
 const FlashSalesSection = () => {
     const swiperElRef = useRef<HTMLLinkElement | any>(null);
     const [flashProducts, setFlashProducts] = useState<any[]>([]);
-    const flashSaleId = process.env.FLASH_SALE_ID || 'default_flash_sale_id';
+    const flashSaleId = process.env.NEXT_PUBLIC_FLASH_SALE_ID || 'default_flash_sale_id';
 
     const buttonVariants = {
         hover: { scale: 1.05 },

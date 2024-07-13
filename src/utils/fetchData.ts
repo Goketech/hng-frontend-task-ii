@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 const fetchData = async (categoryId: string) => {
-  const organizationId = process.env.ORGANIZATION_ID;
-  const apiKey = process.env.API_KEY;
-  const appId = process.env.APP_ID;
+  const organizationId = process.env.NEXT_PUBLIC_ORGANIZATION_ID;
+  const apiKey = process.env.NEXT_PUBLIC_API_KEY;
+  const appId = process.env.NEXT_PUBLIC_APP_ID;
 
   try {
     const response = await axios.get('https://api.timbu.cloud/products', {
