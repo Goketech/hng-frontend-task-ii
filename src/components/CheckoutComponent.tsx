@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useCart } from '@/context/CartContext';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 export interface Product {
     id: string;
@@ -18,11 +18,21 @@ const CheckoutComponent = () => {
     const [formFilled, setFormFilled] = useState(false);
     const [showFormPopup, setShowFormPopup] = useState(false);
     const [showCartPopup, setShowCartPopup] = useState(false);
+    const [total, setTotal] = useState(0);
     const formRef = useRef<HTMLFormElement>(null);
 
     const buttonVariants = {
         hover: { scale: 1.05 },
     };
+
+    useEffect(() => {
+        // Calculate total when cart changes
+        let totalPrice = 0;
+        cart.forEach((product: Product) => {
+            totalPrice += product.current_price * product.quantity;
+        });
+        setTotal(totalPrice);
+    }, [cart]);
 
     const handlePlaceOrder = () => {
         const requiredFields = ['firstName', 'streetAddress', 'city', 'phoneNumber', 'email'];
@@ -112,9 +122,9 @@ const CheckoutComponent = () => {
                                             ? `https://api.timbu.cloud/images/${product.photos[0].url}`
                                             : 'https://api.timbu.cloud/images/default_image.jpg'} alt="chair" width={54} height={54} />
                                     </div>
-                                    <div>
+                                    <div className='flex gap-2'>
                                         <p className='font-medium'>{product.name}</p>
-                                        <p className='font-medium'>X{product.quantity}</p>
+                                        <p className='font-medium'>x{product.quantity}</p>
                                     </div>
                                 </div>
                                 <div className='py-4'>${product.current_price * product.quantity}</div>
@@ -123,7 +133,7 @@ const CheckoutComponent = () => {
                     )}
                     <div className='flex justify-between py-4 border-b'>
                         <p>Total:</p>
-                        <p>$3240</p>
+                        <p>${total}</p>
                     </div>
                     <div className='flex justify-between py-4 border-b'>
                         <p>Shipping:</p>
@@ -131,7 +141,7 @@ const CheckoutComponent = () => {
                     </div>
                     <div className='flex justify-between py-4 border-b'>
                         <p>Total:</p>
-                        <p>$3240</p>
+                        <p>${total}</p>
                     </div>
                     <div className='flex gap-4 mt-8'>
                         <input className='border-white accent-[#FF8933]' type="radio" name="card" id="card" />
