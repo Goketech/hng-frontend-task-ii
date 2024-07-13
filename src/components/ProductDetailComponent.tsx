@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import ProductCard from './ProductCard';
+import { useCart } from '@/context/CartContext';
 
 interface ProductCardProps {
     product: any;
@@ -11,6 +12,8 @@ interface ProductCardProps {
 
 const ProductDetailComponent: React.FC<ProductCardProps> = ({ product }) => {
     const [count, setCount] = useState(1);
+    const [showPopup, setShowPopup] = useState(false);
+    const { addToCart, cart } = useCart();
 
     if (typeof product !== 'object' || product === null) {
         return (
@@ -26,6 +29,14 @@ const ProductDetailComponent: React.FC<ProductCardProps> = ({ product }) => {
 
     const handleDecrement = () => {
         setCount((prevCount) => Math.max(prevCount - 1, 1));
+    };
+
+    const handleAddToCart = () => {
+        console.log('product', product);
+        addToCart({ ...product, quantity: count });
+        setShowPopup(true);
+        setTimeout(() => setShowPopup(false), 3000);
+        console.log('cart', cart);
     };
 
     return (
@@ -66,7 +77,7 @@ const ProductDetailComponent: React.FC<ProductCardProps> = ({ product }) => {
                             <button onClick={handleIncrement} className='rounded-r bg-[#FF8933] text-4xl text-white w-12 h-12'>+</button>
                         </div>
                         <div>
-                            <motion.button whileHover={{ scale: 1.05 }} className="bg-[#FF8933] text-white text-base font-medium rounded py-[12px] px-12">Buy Now</motion.button>
+                            <motion.button whileHover={{ scale: 1.05 }} className="bg-[#FF8933] text-white text-base font-medium rounded py-[12px] px-12" onClick={handleAddToCart}>Buy Now</motion.button>
                         </div>
                     </div>
                     <div className='mt-5 border-2'>
@@ -87,6 +98,11 @@ const ProductDetailComponent: React.FC<ProductCardProps> = ({ product }) => {
                     </div>
                 </div>
             </div>
+            {showPopup && (
+                <div className="fixed bottom-4 right-4 bg-green-500 text-white p-4 rounded">
+                    Product added to cart!
+                </div>
+            )}
             <div className='pl-2.5 md:pl-10'>
                 <div className="flex gap-3 md:gap-6">
                     <div className="bg-[#FF8933] rounded w-4 md:w-8 h-[85px] md:h-[100px]"></div>

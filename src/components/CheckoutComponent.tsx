@@ -2,12 +2,15 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { useCart } from '@/context/CartContext';
 
 const CheckoutComponent = () => {
+    const { cart, clearCart } = useCart();
+
     const buttonVariants = {
         hover: { scale: 1.05 },
     };
-
+    console.log(cart);
     return (
         <div className='max-w-screen-2xl 2xl:mx-auto'>
             <div className='pl-2.5 md:pl-10 mt-20'>
@@ -43,7 +46,7 @@ const CheckoutComponent = () => {
                         </div>
                         <div className='flex flex-col'>
                             <label className='mb-2' htmlFor="email">Email Address<span className='text-[#DF1C41]'>*</span></label>
-                            <input className='bg-[#F5F5F5] py-3.5'  type="text" name='email' id='email' required />
+                            <input className='bg-[#F5F5F5] py-3.5' type="text" name='email' id='email' required />
                         </div>
                         <div className='flex gap-4'>
                             <input className='accent-[#FF8933] color bg-white' type="checkbox" name="" id="" />
@@ -52,6 +55,25 @@ const CheckoutComponent = () => {
                     </div>
                 </div>
                 <div>
+                    {cart.length === 0 ? (
+                        <p>Your cart is empty.</p>
+                    ) : (
+                        cart.map((product, index) => (
+                            <div key={index} className='py-2 px-4 flex items-center justify-between'>
+                                <div className='py-4 pr-4 flex items-center gap-4'>
+                                    <div>
+                                        <Image src={product.photos?.length > 0
+                                            ? `https://api.timbu.cloud/images/${product.photos[0].url}`
+                                            : 'https://api.timbu.cloud/images/default_image.jpg'} alt="chair" width={54} height={54} />
+                                    </div>
+                                    <div>
+                                        <p className='font-medium'>{product.name}</p>
+                                    </div>
+                                </div>
+                                <div className='py-4'>${product.current_price}</div>
+                            </div>
+                        ))
+                    )}
                     <div className='py-2 px-4 flex items-center justify-between'>
                         <div className='py-4 pr-4 flex items-center gap-4'>
                             <div>
