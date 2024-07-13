@@ -6,7 +6,7 @@ const fetchData = async (categoryId: string) => {
   const appId = process.env.NEXT_PUBLIC_APP_ID;
 
   try {
-    const response = await axios.get('https://api.timbu.cloud/products', {
+    const response = await axios.get('https://timbu-get-all-products.reavdev.workers.dev/', {
       params: {
         organization_id: organizationId,
         reverse_sort: false,

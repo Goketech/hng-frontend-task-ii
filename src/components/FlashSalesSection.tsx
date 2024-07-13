@@ -57,10 +57,21 @@ const FlashSalesSection = () => {
                     <Image id="next" onClick={handleSliderChange} className="cursor-pointer bg-[#f5f5f5] rounded-full p-2" src="/icons_arrow-right.svg" alt="arrow" width={32} height={32} />
                 </div>
                 <div className="md:hidden grid gap-2 grid-cols-2">
-                    <Card discountPercentage="-35%" title="Kabir Chair" numberOfRatings={88} oldPrice={160} newPrice={120} productImage="/kabir-chair.png" />
-                    <Card discountPercentage="-35%" title="Asara Chair" numberOfRatings={86} oldPrice={160} newPrice={110} productImage="/asara-chair.png" />
-                    <Card discountPercentage="-35%" title="Chidi Chair" numberOfRatings={85} oldPrice={160} newPrice={120} productImage="/chidi-chair.png" />
-                    <Card discountPercentage="-35%" title="Zadok Chair" numberOfRatings={85} oldPrice={180} newPrice={110} productImage="/zadok-chair.png" />
+                    {flashProducts.map((product) => (
+                        <Card
+                            key={product.id}
+                            discountPercentage="-35%"
+                            title={product.name}
+                            numberOfRatings={85}
+                            oldPrice={product.current_price[0].USD[0]}
+                            newPrice={product.current_price[0].USD[1]}
+                            productImage={
+                                product.photos.length > 0
+                                    ? `https://api.timbu.cloud/images/${product.photos[0].url}`
+                                    : 'https://api.timbu.cloud/images/default_image.jpg'
+                            }
+                        />
+                    ))}
                 </div>
                 <div className='hidden md:block'>
                     <swiper-container
@@ -69,21 +80,21 @@ const FlashSalesSection = () => {
                         init="false"
                     >
                         {flashProducts.map((product) => (
-                             <swiper-slide key={product.id}>
-                             <Card
-                                 discountPercentage="-35%"
-                                 title={product.name}
-                                 numberOfRatings={85}
-                                 oldPrice={product.current_price[0].USD[0]}
-                                 newPrice={product.current_price[0].USD[1]}
-                                 productImage={
-                                    product.photos.length > 0 
-                                    ? `https://api.timbu.cloud/images/${product.photos[0].url}`
-                                    : 'https://api.timbu.cloud/images/default_image.jpg' // Placeholder image if no photos are available
-                                }
-                             />
-                         </swiper-slide>
-                     ))}
+                            <swiper-slide key={product.id}>
+                                <Card
+                                    discountPercentage="-35%"
+                                    title={product.name}
+                                    numberOfRatings={85}
+                                    oldPrice={product.current_price[0].USD[0]}
+                                    newPrice={product.current_price[0].USD[1]}
+                                    productImage={
+                                        product.photos.length > 0
+                                            ? `https://api.timbu.cloud/images/${product.photos[0].url}`
+                                            : 'https://api.timbu.cloud/images/default_image.jpg'
+                                    }
+                                />
+                            </swiper-slide>
+                        ))}
                         {/* <swiper-slide><Card discountPercentage="-35%" title="Kabir Chair" numberOfRatings={88} oldPrice={160} newPrice={120} productImage="/kabir-chair.png" /></swiper-slide>
                         <swiper-slide><Card discountPercentage="-35%" title="Asara Chair" numberOfRatings={86} oldPrice={160} newPrice={110} productImage="/asara-chair.png" /></swiper-slide>
                         <swiper-slide><Card discountPercentage="-35%" title="Chidi Chair" numberOfRatings={85} oldPrice={160} newPrice={120} productImage="/chidi-chair.png" /></swiper-slide>

@@ -36,6 +36,7 @@ const ProductCard: React.FC<CardProps> = ({
                         alt="product"
                         width={300}
                         height={300}
+                        priority
                     />
                 </div>
                 <div className='bg-[#F5F5F5] pt-px'>

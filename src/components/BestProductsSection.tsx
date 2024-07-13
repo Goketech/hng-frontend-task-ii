@@ -1,15 +1,18 @@
 "use client"
 
 import { motion } from 'framer-motion';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from "next/image";
 import ProductCard from './ProductCard';
 import Swiper from 'swiper';
 import 'swiper/swiper-bundle.css';
 import { register } from "swiper/element/bundle";
+import fetchData from '../utils/fetchData';
 
 const BestProductsSection = () => {
     const swiperElRef2 = useRef<HTMLLinkElement | any>(null);
+    const [bestProducts, setBestProducts] = useState<any[]>([]);
+    const bestSaleId = process.env.NEXT_PUBLIC_BEST_SALE_ID || 'default_best_sale_id';
 
     const buttonVariants = {
         hover: { scale: 1.05 },
@@ -33,6 +36,19 @@ const BestProductsSection = () => {
         const swiperContainer = swiperElRef2.current?.swiper;
         swiperContainer.slidePrev();
     };
+
+    useEffect(() => {
+        const getProducts = async () => {
+            const data = await fetchData(bestSaleId);
+            if (data) {
+                setBestProducts(data.items);
+                console.log(data);
+            }
+        };
+
+        getProducts();
+    }, [bestSaleId]);
+
 
     return (
         <div className="max-w-screen-2xl 2xl:mx-auto">
@@ -60,13 +76,28 @@ const BestProductsSection = () => {
                         slides-per-view="4"
                         init="false"
                     >
-                        <swiper-slide><ProductCard title="Sally Side Table" numberOfRatings={65} oldPrice={1200} newPrice={800} productImage="/sally-side-table.png" /></swiper-slide>
+                        {bestProducts.map((product) => (
+                            <swiper-slide key={product.id}>
+                                <ProductCard
+                                    title={product.name}
+                                    numberOfRatings={85}
+                                    oldPrice={product.current_price[0].USD[0]}
+                                    newPrice={product.current_price[0].USD[1]}
+                                    productImage={
+                                        product.photos.length > 0
+                                            ? `https://api.timbu.cloud/images/${product.photos[0].url}`
+                                            : 'https://api.timbu.cloud/images/default_image.jpg'
+                                    }
+                                />
+                            </swiper-slide>
+                        ))}
+                        {/* <swiper-slide><ProductCard title="Sally Side Table" numberOfRatings={65} oldPrice={1200} newPrice={800} productImage="/sally-side-table.png" /></swiper-slide>
                         <swiper-slide><ProductCard title="Dion Sofa" numberOfRatings={65} oldPrice={1160} newPrice={200} productImage="/dion-sofa.png" /></swiper-slide>
                         <swiper-slide><ProductCard title="Khandy Accessories" numberOfRatings={65} oldPrice={1100} newPrice={800} productImage="/khandy-accessories.png" /></swiper-slide>
                         <swiper-slide><ProductCard title="Dee Side Table" numberOfRatings={65} oldPrice={1340} newPrice={800} productImage="/dee-side-table.png" /></swiper-slide>
                         <swiper-slide><ProductCard title="Rionna Chair" numberOfRatings={65} oldPrice={1340} newPrice={960} productImage="/rionna-chair.png" /></swiper-slide>
                         <swiper-slide><ProductCard title="Lianna Sofa" numberOfRatings={65} oldPrice={1340} newPrice={1000} productImage="/lianna-sofa.png" /></swiper-slide>
-                        <swiper-slide><ProductCard title="Kelly Dining Set" numberOfRatings={65} oldPrice={1260} newPrice={800} productImage="/kelly-dining-set.png" /></swiper-slide>
+                        <swiper-slide><ProductCard title="Kelly Dining Set" numberOfRatings={65} oldPrice={1260} newPrice={800} productImage="/kelly-dining-set.png" /></swiper-slide> */}
                     </swiper-container>
                 </div>
             </div>
