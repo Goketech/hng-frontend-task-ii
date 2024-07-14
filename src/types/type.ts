@@ -92,3 +92,24 @@ export interface CardProps {
     newPrice: number;
     id: string;
 }
+
+export const defaultProduct: Product = {
+    name: '',
+    description: '',
+    unique_id: '',
+    url_slug: '',
+    is_available: false,
+    is_service: false,
+    unavailable: false,
+    id: '',
+    organization_id: '',
+    categories: [],
+    date_created: '',
+    last_updated: '',
+    user_id: '',
+    photos: [],
+    current_price: [],
+    is_deleted: false,
+    available_quantity: 0,
+}
+
