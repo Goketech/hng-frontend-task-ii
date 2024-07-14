@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useCart } from '@/context/CartContext';
 import { useState, useRef, useEffect } from 'react';
-import { Product } from '../types/types';
+import { Product } from '../types/type';
 
 
 const CheckoutComponent = () => {

@@ -9,7 +9,7 @@ import 'swiper/swiper-bundle.css';
 import { register } from 'swiper/element/bundle';
 import fetchData from '../utils/fetchData';
 import Link from 'next/link';
-import { Product } from '../types/types';
+import { Product } from '../types/type';
 
 const BestProductsSection = () => {
     const swiperElRef2 = useRef<HTMLLinkElement | any>(null);

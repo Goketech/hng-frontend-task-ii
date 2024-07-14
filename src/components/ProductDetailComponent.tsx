@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import ProductCard from './ProductCard';
 import { useCart } from '@/context/CartContext';
-import { ProductCardProps } from '../types/types';
+import { ProductCardProps } from '../types/type';
 
 
 const ProductDetailComponent: React.FC<ProductCardProps> = ({ product }) => {

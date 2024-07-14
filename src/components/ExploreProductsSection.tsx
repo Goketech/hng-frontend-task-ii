@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import ProductCard from './ProductCard';
 import fetchData from '../utils/fetchData';
-import { Product } from '../types/types';
+import { Product } from '../types/type';
 
 const ExploreProductsSection = () => {
     const [exploreProducts, setExploreProducts] = useState<Product[]>([]);
