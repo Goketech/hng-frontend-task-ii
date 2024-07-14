@@ -8,6 +8,7 @@ import Swiper from 'swiper';
 import 'swiper/swiper-bundle.css';
 import { register } from 'swiper/element/bundle';
 import fetchData from '../utils/fetchData';
+import Link from 'next/link';
 
 const BestProductsSection = () => {
     const swiperElRef2 = useRef<HTMLLinkElement | any>(null);
@@ -141,7 +142,9 @@ const BestProductsSection = () => {
                     whileHover="hover"
                     className="bg-[#FF8933] text-white text-lg font-semibold rounded py-4 px-12"
                 >
-                    View All Products
+                    <Link href="#allProducts">
+                        View All Products
+                    </Link>
                 </motion.button>
             </div>
         </div>

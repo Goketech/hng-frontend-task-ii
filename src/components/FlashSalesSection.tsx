@@ -8,6 +8,7 @@ import Swiper from 'swiper';
 import 'swiper/swiper-bundle.css';
 import { register } from "swiper/element/bundle";
 import fetchData from '../utils/fetchData';
+import Link from 'next/link';
 
 const FlashSalesSection = () => {
     const swiperElRef = useRef<HTMLLinkElement | any>(null);
@@ -23,8 +24,13 @@ const FlashSalesSection = () => {
         register();
 
         const swiperContainer = swiperElRef.current;
+        const params = {
+            //   pagination: {
+            //     clickable: true,
+            //   },
+          };
 
-        Object.assign(swiperContainer);
+        Object.assign(swiperContainer, params);
         swiperContainer.initialize();
     }, []);
 
@@ -118,7 +124,7 @@ const FlashSalesSection = () => {
                 </div>
             </div>
             <div className="ml-2.5 md:ml-10 m-10 pb-10 w-[85%] border-b mb-10">
-                <motion.button variants={buttonVariants} whileHover="hover" className="bg-[#FF8933] text-white text-lg font-semibold rounded py-4 px-6 md:px-12">View All Products</motion.button>
+                <motion.button variants={buttonVariants} whileHover="hover" className="bg-[#FF8933] text-white text-lg font-semibold rounded py-4 px-6 md:px-12"><Link href="#allProducts">View All Products</Link></motion.button>
             </div>
         </div>
     )

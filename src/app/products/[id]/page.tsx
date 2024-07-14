@@ -5,6 +5,7 @@ import Nav from "@/components/Nav"
 import ProductDetailComponent from "@/components/ProductDetailComponent"
 import Footer from "@/components/Footer"
 import fetchProduct from "../../../utils/fetchProduct";
+import { Spinner } from '@chakra-ui/react';
 
 export default function ProductDetailsPage({
   params: { id },
@@ -27,7 +28,7 @@ export default function ProductDetailsPage({
   return (
     <div>
       <Nav />
-      {loading ? <div>Loading...</div> : (<ProductDetailComponent product={product} />)}
+      {loading ? <div className="flex justify-center items-center h-64"><Spinner size='xl' /></div> : (<ProductDetailComponent product={product} />)}
       <Footer />
     </div>
   )

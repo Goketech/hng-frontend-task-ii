@@ -23,7 +23,7 @@ const Card: React.FC<ProductCardProps> = ({ discountPercentage,
     return (
         <Link href={`/products/${id}`}>
             <motion.div whileHover={{ scale: 1.05 }}
-                transition={{ type: 'spring', stiffness: 300, damping: 20 }} className='p-2 border rounded-lg md:mr-6 cursor-pointer'>
+                transition={{ type: 'spring', stiffness: 300, damping: 20 }} className='p-2 border rounded-lg md:mr-6 cursor-pointer pt-4'>
                 <div className='flex justify-between items-center h-auto'>
                     <p className='bg-[#DB4444] px-3 py-1 rounded-lg text-white'>{discountPercentage}</p>
                     {/* <Image

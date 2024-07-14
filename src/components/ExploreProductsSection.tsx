@@ -15,14 +15,15 @@ const ExploreProductsSection = () => {
     const [accessoryProducts, setAccessoryProducts] = useState<any[]>([]);
     const [currentSection, setCurrentSection] = useState<string>('explore');
     const [loadingExplore, setLoadingExplore] = useState<boolean>(true);
-    const exploreId =
-        process.env.NEXT_PUBLIC_EXPLORE_ID || 'default_best_sale_id';
+    const [currentPage, setCurrentPage] = useState<number>(1);
+    const itemsPerPage = 8;
+
+    const exploreId = process.env.NEXT_PUBLIC_EXPLORE_ID || '';
     const chairId = process.env.NEXT_PUBLIC_CHAIR_ID || 'default_best_sale_id';
     const diningId = process.env.NEXT_PUBLIC_DINING_ID || 'default_best_sale_id';
     const sofaId = process.env.NEXT_PUBLIC_SOFA_ID || 'default_best_sale_id';
     const sideId = process.env.NEXT_PUBLIC_SIDE_ID || 'default_best_sale_id';
-    const accessoryId =
-        process.env.NEXT_PUBLIC_ACCESSORY_ID || 'default_best_sale_id';
+    const accessoryId = process.env.NEXT_PUBLIC_ACCESSORY_ID || 'default_best_sale_id';
 
     const buttonVariants = {
         hover: { scale: 1.05 },
@@ -31,7 +32,7 @@ const ExploreProductsSection = () => {
     useEffect(() => {
         const getExploreProducts = async () => {
             setLoadingExplore(true);
-            const data = await fetchData(exploreId);
+            const data = await fetchData('all');
             if (data) {
                 setExploreProducts(data.items);
             }
@@ -81,8 +82,48 @@ const ExploreProductsSection = () => {
         getAccessoryProducts();
     }, []);
 
+    const getPaginatedData = (products: any[]) => {
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        console.log(startIndex);
+        console.log(products.slice(startIndex, startIndex + itemsPerPage));
+        return products.slice(startIndex, startIndex + itemsPerPage);
+    };
+
+    const Pagination = ({ totalItems }: { totalItems: number }) => {
+        const totalPages = Math.ceil(totalItems / itemsPerPage);
+        const pages = [];
+        
+        if (totalPages <= 5) {
+            for (let i = 1; i <= totalPages; i++) {
+                pages.push(i);
+            }
+        } else {
+            if (currentPage <= 3) {
+                pages.push(1, 2, 3, 4, '...', totalPages);
+            } else if (currentPage >= totalPages - 2) {
+                pages.push(1, '...', totalPages - 3, totalPages - 2, totalPages - 1, totalPages);
+            } else {
+                pages.push(1, '...', currentPage - 1, currentPage, currentPage + 1, '...', totalPages);
+            }
+        }
+    
+        return (
+            <div className="flex justify-center space-x-2 mt-4">
+                {pages.map((page, index) => (
+                    <button
+                        key={index}
+                        onClick={() => page !== '...' && setCurrentPage(page as number)}
+                        className={`px-4 py-2 ${currentPage === page ? 'bg-[#FF8933] text-white' : 'bg-white text-black border'}`}
+                    >
+                        {page}
+                    </button>
+                ))}
+            </div>
+        );
+    };
+    
     return (
-        <div className="max-w-screen-2xl 2xl:mx-auto">
+        <div id='allProducts' className="max-w-screen-2xl 2xl:mx-auto">
             <div className="px-2.5 md:px-10">
                 <div className="flex gap-3 md:gap-6">
                     <div className="bg-[#FF8933] rounded w-4 md:w-8 h-[85px] md:h-[100px]"></div>
@@ -97,6 +138,7 @@ const ExploreProductsSection = () => {
                     <motion.button
                         onClick={() => {
                             setCurrentSection('explore');
+                            setCurrentPage(1);
                         }}
                         whileHover={{ scale: 1.05 }}
                         className={`${currentSection === 'explore' ? 'text-white rounded-full border px-6 py-2.5 bg-[#FF8933]' : 'rounded-full border px-6 py-2.5 border-[#FF8933]'}`}
@@ -106,6 +148,7 @@ const ExploreProductsSection = () => {
                     <motion.button
                         onClick={() => {
                             setCurrentSection('chair');
+                            setCurrentPage(1);
                         }}
                         whileHover={{ scale: 1.05 }}
                         className={`${currentSection === 'chair' ? 'text-white rounded-full border px-6 py-2.5 bg-[#FF8933]' : 'rounded-full border px-6 py-2.5 border-[#FF8933]'}`}
@@ -115,6 +158,7 @@ const ExploreProductsSection = () => {
                     <motion.button
                         onClick={() => {
                             setCurrentSection('dining');
+                            setCurrentPage(1);
                         }}
                         whileHover={{ scale: 1.05 }}
                         className={`${currentSection === 'dining' ? 'text-white rounded-full border px-6 py-2.5 bg-[#FF8933]' : 'rounded-full border px-6 py-2.5 border-[#FF8933]'}`}
@@ -124,6 +168,7 @@ const ExploreProductsSection = () => {
                     <motion.button
                         onClick={() => {
                             setCurrentSection('sofa');
+                            setCurrentPage(1);
                         }}
                         whileHover={{ scale: 1.05 }}
                         className={`${currentSection === 'sofa' ? 'text-white rounded-full border px-6 py-2.5 bg-[#FF8933]' : 'rounded-full border px-6 py-2.5 border-[#FF8933]'}`}
@@ -133,6 +178,7 @@ const ExploreProductsSection = () => {
                     <motion.button
                         onClick={() => {
                             setCurrentSection('side');
+                            setCurrentPage(1);
                         }}
                         whileHover={{ scale: 1.05 }}
                         className={`${currentSection === 'side' ? 'text-white rounded-full border px-6 py-2.5 bg-[#FF8933]' : 'rounded-full border px-6 py-2.5 border-[#FF8933]'}`}
@@ -142,6 +188,7 @@ const ExploreProductsSection = () => {
                     <motion.button
                         onClick={() => {
                             setCurrentSection('accessory');
+                            setCurrentPage(1);
                         }}
                         whileHover={{ scale: 1.05 }}
                         className={`${currentSection === 'accessory' ? 'text-white rounded-full border px-6 py-2.5 bg-[#FF8933]' : 'rounded-full border px-6 py-2.5 border-[#FF8933]'}`}
@@ -149,11 +196,11 @@ const ExploreProductsSection = () => {
                         Accessories
                     </motion.button>
                 </div>
-                <div className="grid grid-cols-2 gap-2 md:hidden">
+                <div className="grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-x-0 md:gap-y-4">
                     {currentSection === 'explore' && (loadingExplore ? (
                         <p>Loading Explore Products...</p>
                     ) : (
-                        exploreProducts.map((product) => (
+                        getPaginatedData(exploreProducts).map((product) => (
                             <ProductCard
                                 id={product.id}
                                 key={product.id}
@@ -169,7 +216,7 @@ const ExploreProductsSection = () => {
                             />
                         ))))}
                     {currentSection === 'chair' &&
-                        chairProducts.map((product) => (
+                        getPaginatedData(chairProducts).map((product) => (
                             <ProductCard
                                 id={product.id}
                                 key={product.id}
@@ -185,7 +232,7 @@ const ExploreProductsSection = () => {
                             />
                         ))}
                     {currentSection === 'dining' &&
-                        diningProducts.map((product) => (
+                        getPaginatedData(diningProducts).map((product) => (
                             <ProductCard
                                 id={product.id}
                                 key={product.id}
@@ -201,7 +248,7 @@ const ExploreProductsSection = () => {
                             />
                         ))}
                     {currentSection === 'sofa' &&
-                        sofaProducts.map((product) => (
+                        getPaginatedData(sofaProducts).map((product) => (
                             <ProductCard
                                 id={product.id}
                                 key={product.id}
@@ -217,7 +264,7 @@ const ExploreProductsSection = () => {
                             />
                         ))}
                     {currentSection === 'side' &&
-                        sideProducts.map((product) => (
+                        getPaginatedData(sideProducts).map((product) => (
                             <ProductCard
                                 id={product.id}
                                 key={product.id}
@@ -233,108 +280,7 @@ const ExploreProductsSection = () => {
                             />
                         ))}
                     {currentSection === 'accessory' &&
-                        accessoryProducts.map((product) => (
-                            <ProductCard
-                                id={product.id}
-                                key={product.id}
-                                title={product.name}
-                                numberOfRatings={85}
-                                oldPrice={product.current_price[0].USD[0]}
-                                newPrice={product.current_price[0].USD[1]}
-                                productImage={
-                                    product.photos.length > 0
-                                        ? `https://api.timbu.cloud/images/${product.photos[0].url}`
-                                        : 'https://api.timbu.cloud/images/default_image.jpg'
-                                }
-                            />
-                        ))}
-
-                </div>
-                <div className="hidden md:grid grid-cols-4 gap-x-0 gap-y-4">
-                    {currentSection === 'chair' &&
-                        chairProducts.map((product) => (
-                            <ProductCard
-                                id={product.id}
-                                key={product.id}
-                                title={product.name}
-                                numberOfRatings={85}
-                                oldPrice={product.current_price[0].USD[0]}
-                                newPrice={product.current_price[0].USD[1]}
-                                productImage={
-                                    product.photos.length > 0
-                                        ? `https://api.timbu.cloud/images/${product.photos[0].url}`
-                                        : 'https://api.timbu.cloud/images/default_image.jpg'
-                                }
-                            />
-                        ))}
-                    {currentSection === 'explore' && (loadingExplore ? (
-                        <p>Loading Explore Products...</p>
-                    ) : (
-                        exploreProducts.map((product) => (
-                            <ProductCard
-                                id={product.id}
-                                key={product.id}
-                                title={product.name}
-                                numberOfRatings={85}
-                                oldPrice={product.current_price[0].USD[0]}
-                                newPrice={product.current_price[0].USD[1]}
-                                productImage={
-                                    product.photos.length > 0
-                                        ? `https://api.timbu.cloud/images/${product.photos[0].url}`
-                                        : 'https://api.timbu.cloud/images/default_image.jpg'
-                                }
-                            />
-                        ))))}
-                    {currentSection === 'dining' &&
-                        diningProducts.map((product) => (
-                            <ProductCard
-                                id={product.id}
-                                key={product.id}
-                                title={product.name}
-                                numberOfRatings={85}
-                                oldPrice={product.current_price[0].USD[0]}
-                                newPrice={product.current_price[0].USD[1]}
-                                productImage={
-                                    product.photos.length > 0
-                                        ? `https://api.timbu.cloud/images/${product.photos[0].url}`
-                                        : 'https://api.timbu.cloud/images/default_image.jpg'
-                                }
-                            />
-                        ))}
-                    {currentSection === 'sofa' &&
-                        sofaProducts.map((product) => (
-                            <ProductCard
-                                id={product.id}
-                                key={product.id}
-                                title={product.name}
-                                numberOfRatings={85}
-                                oldPrice={product.current_price[0].USD[0]}
-                                newPrice={product.current_price[0].USD[1]}
-                                productImage={
-                                    product.photos.length > 0
-                                        ? `https://api.timbu.cloud/images/${product.photos[0].url}`
-                                        : 'https://api.timbu.cloud/images/default_image.jpg'
-                                }
-                            />
-                        ))}
-                    {currentSection === 'side' &&
-                        sideProducts.map((product) => (
-                            <ProductCard
-                                id={product.id}
-                                key={product.id}
-                                title={product.name}
-                                numberOfRatings={85}
-                                oldPrice={product.current_price[0].USD[0]}
-                                newPrice={product.current_price[0].USD[1]}
-                                productImage={
-                                    product.photos.length > 0
-                                        ? `https://api.timbu.cloud/images/${product.photos[0].url}`
-                                        : 'https://api.timbu.cloud/images/default_image.jpg'
-                                }
-                            />
-                        ))}
-                    {currentSection === 'accessory' &&
-                        accessoryProducts.map((product) => (
+                        getPaginatedData(accessoryProducts).map((product) => (
                             <ProductCard
                                 id={product.id}
                                 key={product.id}
@@ -350,15 +296,12 @@ const ExploreProductsSection = () => {
                             />
                         ))}
                 </div>
-            </div>
-            <div className="ml-2.5 md:ml-10 m-10 pb-10 w-[85%] border-b mb-10">
-                <motion.button
-                    variants={buttonVariants}
-                    whileHover="hover"
-                    className="bg-[#FF8933] text-white text-lg font-semibold rounded py-4 px-12"
-                >
-                    Load More
-                </motion.button>
+                <Pagination totalItems={currentSection === 'explore' ? exploreProducts.length : 
+                    currentSection === 'chair' ? chairProducts.length : 
+                    currentSection === 'dining' ? diningProducts.length : 
+                    currentSection === 'sofa' ? sofaProducts.length : 
+                    currentSection === 'side' ? sideProducts.length : 
+                    accessoryProducts.length} />
             </div>
         </div>
     );

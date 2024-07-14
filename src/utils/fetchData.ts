@@ -14,7 +14,7 @@ const fetchData = async (categoryId: any) => {
         size: 50,
         Appid: appId,
         Apikey: apiKey,
-        category_id: categoryId,
+        category_id: categoryId === 'all' ? '' : categoryId
       }
     });
     return response.data;

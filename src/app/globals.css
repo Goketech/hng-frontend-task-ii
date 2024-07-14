@@ -18,3 +18,9 @@ body {
     text-wrap: balance;
   }
 }
+
+@layer components {
+  :root {
+      --swiper-pagination-color: theme('colors.primary');
+  }
+}
