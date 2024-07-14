@@ -5,14 +5,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useCart } from '@/context/CartContext';
 import { useState, useEffect } from 'react';
+import { Product } from '../types/types';
 
-export interface Product {
-    id: string;
-    name: string;
-    current_price: number;
-    photos: any;
-    quantity: number;
-}
 
 const CartComponent = () => {
     const { cart, clearCart, removeFromCart, updateCart } = useCart();

@@ -5,14 +5,15 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import ProductCard from './ProductCard';
 import fetchData from '../utils/fetchData';
+import { Product } from '../types/types';
 
 const ExploreProductsSection = () => {
-    const [exploreProducts, setExploreProducts] = useState<any[]>([]);
-    const [chairProducts, setChairProducts] = useState<any[]>([]);
-    const [diningProducts, setDiningProducts] = useState<any[]>([]);
-    const [sofaProducts, setSofaProducts] = useState<any[]>([]);
-    const [sideProducts, setSideProducts] = useState<any[]>([]);
-    const [accessoryProducts, setAccessoryProducts] = useState<any[]>([]);
+    const [exploreProducts, setExploreProducts] = useState<Product[]>([]);
+    const [chairProducts, setChairProducts] = useState<Product[]>([]);
+    const [diningProducts, setDiningProducts] = useState<Product[]>([]);
+    const [sofaProducts, setSofaProducts] = useState<Product[]>([]);
+    const [sideProducts, setSideProducts] = useState<Product[]>([]);
+    const [accessoryProducts, setAccessoryProducts] = useState<Product[]>([]);
     const [currentSection, setCurrentSection] = useState<string>('explore');
     const [loadingExplore, setLoadingExplore] = useState<boolean>(true);
     const [currentPage, setCurrentPage] = useState<number>(1);
@@ -82,7 +83,7 @@ const ExploreProductsSection = () => {
         getAccessoryProducts();
     }, []);
 
-    const getPaginatedData = (products: any[]) => {
+    const getPaginatedData = (products: Product[]) => {
         const startIndex = (currentPage - 1) * itemsPerPage;
         console.log(startIndex);
         console.log(products.slice(startIndex, startIndex + itemsPerPage));

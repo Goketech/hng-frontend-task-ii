@@ -4,14 +4,8 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useCart } from '@/context/CartContext';
 import { useState, useRef, useEffect } from 'react';
+import { Product } from '../types/types';
 
-export interface Product {
-    id: string;
-    name: string;
-    current_price: number;
-    photos: any;
-    quantity: number;
-}
 
 const CheckoutComponent = () => {
     const { cart, clearCart } = useCart();

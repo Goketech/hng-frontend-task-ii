@@ -5,10 +5,8 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import ProductCard from './ProductCard';
 import { useCart } from '@/context/CartContext';
+import { ProductCardProps } from '../types/types';
 
-interface ProductCardProps {
-    product: any;
-}
 
 const ProductDetailComponent: React.FC<ProductCardProps> = ({ product }) => {
     const [count, setCount] = useState(1);

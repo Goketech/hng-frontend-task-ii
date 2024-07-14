@@ -4,16 +4,7 @@ import { motion } from 'framer-motion';
 import React from 'react';
 import Image from "next/image";
 import Link from 'next/link';
-
-interface ProductCardProps {
-    discountPercentage: string;
-    title: string;
-    productImage: string;
-    numberOfRatings: number;
-    oldPrice: number;
-    newPrice: number;
-    id: string;
-}
+import { ProductCardProps } from '../types/types';
 
 const Card: React.FC<ProductCardProps> = ({ discountPercentage,
     title,

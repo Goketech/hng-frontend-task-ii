@@ -9,10 +9,12 @@ import 'swiper/swiper-bundle.css';
 import { register } from "swiper/element/bundle";
 import fetchData from '../utils/fetchData';
 import Link from 'next/link';
+import { Product } from '../types/types';
+
 
 const FlashSalesSection = () => {
     const swiperElRef = useRef<HTMLLinkElement | any>(null);
-    const [flashProducts, setFlashProducts] = useState<any[]>([]);
+    const [flashProducts, setFlashProducts] = useState<Product[]>([]);
     const flashSaleId = process.env.NEXT_PUBLIC_FLASH_SALE_ID || 'default_flash_sale_id';
     const [loading, setLoading] = useState<boolean>(true);
 

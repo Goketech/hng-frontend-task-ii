@@ -9,12 +9,12 @@ import 'swiper/swiper-bundle.css';
 import { register } from 'swiper/element/bundle';
 import fetchData from '../utils/fetchData';
 import Link from 'next/link';
+import { Product } from '../types/types';
 
 const BestProductsSection = () => {
     const swiperElRef2 = useRef<HTMLLinkElement | any>(null);
-    const [bestProducts, setBestProducts] = useState<any[]>([]);
-    const bestSaleId =
-        process.env.NEXT_PUBLIC_BEST_SALE_ID || 'default_best_sale_id';
+    const [bestProducts, setBestProducts] = useState<Product[]>([]);
+    const bestSaleId = process.env.NEXT_PUBLIC_BEST_SALE_ID || 'default_best_sale_id';
     const [loading, setLoading] = useState<boolean>(true);
 
     const buttonVariants = {
