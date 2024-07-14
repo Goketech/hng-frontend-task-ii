@@ -6,14 +6,14 @@ import ProductDetailComponent from "@/components/ProductDetailComponent"
 import Footer from "@/components/Footer"
 import fetchProduct from "../../../utils/fetchProduct";
 import { Spinner } from '@chakra-ui/react';
-import { Product, defaultProduct } from '../../../types/type';
+import { SingleProduct, defaultProduct } from '../../../types/type';
 
 export default function ProductDetailsPage({
   params: { id },
 }: {
   params: { id: string }
 }) {
-  const [product, setProduct] = useState<Product>(defaultProduct);
+  const [product, setProduct] = useState<SingleProduct>(defaultProduct);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {

@@ -81,7 +81,7 @@ export interface ProductCardProps {
 }
 
 export interface ProductDetailsProps {
-    product: Product;
+    product: SingleProduct;
 }
 
 export interface CardProps {
@@ -93,7 +93,7 @@ export interface CardProps {
     id: string;
 }
 
-export const defaultProduct: Product = {
+export const defaultProduct: SingleProduct = {
     name: '',
     description: '',
     unique_id: '',
@@ -108,8 +108,9 @@ export const defaultProduct: Product = {
     last_updated: '',
     user_id: '',
     photos: [],
-    current_price: [],
+    current_price: 0,
     is_deleted: false,
     available_quantity: 0,
+    quantity: 0,
 }
 
