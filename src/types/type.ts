@@ -49,6 +49,27 @@ export interface Product {
     available_quantity: number;
 }
 
+export interface SingleProduct {
+    name: string;
+    description: string;
+    unique_id: string;
+    url_slug: string;
+    is_available: boolean;
+    is_service: boolean;
+    unavailable: boolean;
+    id: string;
+    organization_id: string;
+    categories: Category[];
+    date_created: string;
+    last_updated: string;
+    user_id: string;
+    photos: Photo[];
+    current_price: number;
+    is_deleted: boolean;
+    available_quantity: number;
+    quantity: number;
+}
+
 export interface ProductCardProps {
     discountPercentage: string;
     title: string;
@@ -57,6 +78,10 @@ export interface ProductCardProps {
     oldPrice: number;
     newPrice: number;
     id: string;
+}
+
+export interface ProductDetailsProps {
+    product: Product;
 }
 
 export interface CardProps {

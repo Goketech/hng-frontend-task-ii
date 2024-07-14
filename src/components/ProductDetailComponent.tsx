@@ -5,10 +5,10 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import ProductCard from './ProductCard';
 import { useCart } from '@/context/CartContext';
-import { ProductCardProps } from '../types/type';
+import { ProductDetailsProps } from '../types/type';
 
 
-const ProductDetailComponent: React.FC<ProductCardProps> = ({ product }) => {
+const ProductDetailComponent: React.FC<ProductDetailsProps> = ({ product }) => {
     const [count, setCount] = useState(1);
     const [showPopup, setShowPopup] = useState(false);
     const { addToCart, cart } = useCart();

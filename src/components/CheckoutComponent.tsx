@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useCart } from '@/context/CartContext';
 import { useState, useRef, useEffect } from 'react';
-import { Product } from '../types/type';
+import { SingleProduct } from '../types/type';
 
 
 const CheckoutComponent = () => {
@@ -21,7 +21,7 @@ const CheckoutComponent = () => {
 
     useEffect(() => {
         let totalPrice = 0;
-        cart.forEach((product: Product) => {
+        cart.forEach((product: SingleProduct) => {
             totalPrice += product.current_price * product.quantity;
         });
         setTotal(totalPrice);
@@ -107,7 +107,7 @@ const CheckoutComponent = () => {
                     {cart.length === 0 ? (
                         <p>Your cart is empty.</p>
                     ) : (
-                        cart.map((product: Product, index: number) => (
+                        cart.map((product: SingleProduct, index: number) => (
                             <div key={index} className='py-2 px-4 flex items-center justify-between'>
                                 <div className='py-4 pr-4 flex items-center gap-4'>
                                     <div>

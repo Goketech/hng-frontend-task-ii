@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useCart } from '@/context/CartContext';
 import { useState, useEffect } from 'react';
-import { Product } from '../types/type';
+import { SingleProduct } from '../types/type';
 
 
 const CartComponent = () => {
@@ -14,7 +14,7 @@ const CartComponent = () => {
 
     useEffect(() => {
         let totalPrice = 0;
-        cart.forEach((product: Product) => {
+        cart.forEach((product: SingleProduct) => {
             totalPrice += product.current_price * product.quantity;
         });
         setTotal(totalPrice);
@@ -34,7 +34,7 @@ const CartComponent = () => {
     ) => {
         const newQuantity = parseInt(event.target.value);
         if (newQuantity >= 1 && newQuantity <= 20) {
-            const updatedCart = cart.map((product: Product) =>
+            const updatedCart = cart.map((product: SingleProduct) =>
                 product.id === productId ? { ...product, quantity: newQuantity } : product
             );
             updateCart(updatedCart);
@@ -60,7 +60,7 @@ const CartComponent = () => {
                         {cart.length === 0 ? (
                             <p>Your cart is empty.</p>
                         ) : (
-                            cart.map((product: Product, index: number) => (
+                            cart.map((product: SingleProduct, index: number) => (
                                 <tr key={index} className='border-b'>
                                     <td className='md:py-8 md:px-6 py-6 px-4 flex items-center gap-2 md:gap-4'>
                                         <div className='relative'>
